@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+// This is your Prisma schema file
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -11,15 +11,62 @@ datasource db {
 }
 
 model ShiwakePtn {
-  id           Int      @id @default(autoincrement())
-  shiwakePtn   Int
+  shiwakePtn   Int      @id
+  shiwakeName  String
   kariCd       Int
-  karikKingaku Int
+  kariName     String
+  kariKingaku  Int
   kariKubun    Boolean
   kashiCd      Int
+  kashiName    String
   kashiKingaku Int
   kashiKubun   Boolean
   hasseiDate   DateTime
+  createdAt    DateTime @default(now())
+}
+
+model Shiwake {
+  id           Int      @id @default(autoincrement())
+  shiwakePtnId Int
+  shiwakeName  String
+  kariCd       Int
+  kariName     String
+  kariKingaku  Int
+  kariKubun    Boolean
+  kashiCd      Int
+  kashiName    String
+  kashiKingaku Int
+  kashiKubun   Boolean
+  tekiyou      String
+  hasseiDate   DateTime
   userId       Int
   createdAt    DateTime @default(now())
+}
+
+model Seisanhyou {
+  id         Int      @id @default(autoincrement())
+  kamokuCd   Int
+  kamokuName String
+  kingaku    Int
+  nendo      Int
+  userId     Int
+  updatedAt  DateTime
+  createdAt  DateTime @default(now())
+}
+
+model Kamoku {
+  kamokuCd    Int      @id
+  kamokuGr    Int
+  kamokuName  String
+  kariKubun   Boolean
+  kashiKubun  Boolean
+  seisanKubun String
+  createdAt   DateTime @default(now())
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  mail      String   @unique
+  userName  String
+  createdAt DateTime @default(now())
 }
