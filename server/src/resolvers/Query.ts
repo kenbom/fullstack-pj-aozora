@@ -1,4 +1,8 @@
+import { Context } from "../index"
 
 export const Query = {
-    hello: () => "World!"
+    users: async(_: any, __: any, { prisma }: Context) => {
+        const users = await prisma.user.findMany()
+    
+    return users}
 }
