@@ -13,11 +13,8 @@ export interface Context {
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers: {
-        Query,
-    },
-    context: {
-        prisma
+    resolvers:{
+        Query , 
     }
 })
 
