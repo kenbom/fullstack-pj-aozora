@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from "@chakra-ui/react";
 
-export const ShiwakeCard = (props) => {
+export const ShiwakeTouroku = (props) => {
   return (
     <Box
       //m={4}

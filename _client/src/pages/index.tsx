@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from "next";
+// import Head from "next/head";
+// import Image from "next/image";
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { ShiwakeTouroku } from "../components/shiwakeTouroku/ShiwakeTouroku";
 import { KamokuMenu } from "../components/shiwakeTouroku/KamokuMenu";
-import { SeisanHyou } from "../components/seisanHyou/SeisanHyou";
+import { SeisanHyou } from "../components/SeisanHyou/SeisanHyou";
 // import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
