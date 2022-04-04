@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             <ShiwakeTouroku name="Kashikata"></ShiwakeTouroku>
           </GridItem>
           <GridItem rowSpan={1} colSpan={2}>
-            <SeisanHyou></SeisanHyou>
+            <SeisanHyou name="SeisanHyou"></SeisanHyou>
           </GridItem>
         </Grid>
       </Box>

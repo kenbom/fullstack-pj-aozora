@@ -1,7 +1,9 @@
-import React from "react";
+import React, { ReactElement, VFC } from "react";
 import { Box } from "@chakra-ui/layout";
-
-export const SeisanHyou = (props) => {
+interface SeisanHyouType{
+  name:String
+}
+export const SeisanHyou = (props:SeisanHyouType):ReactElement => {
   return (
     <Box
       //m={4}
