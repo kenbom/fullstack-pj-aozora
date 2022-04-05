@@ -1,21 +1,30 @@
-
-import { gql } from "apollo-server"
+import { gql } from "apollo-server";
 
 export const typeDefs = gql`
-type Query{
+  type Query {
     users: [User!]!
     hello: String
     kamokus: [Kamoku!]!
-}
+  }
 
-type User {
+  type Mutation {
+    userCreate(user: UserInput!): User
+  }
+
+  type User {
+    id: ID!
     userName: String
     mail: String
-}
+  }
 
-type Kamoku {
-   kamokuName: String
-   kariKubun: Boolean
-}
+  type Kamoku {
+    kamokuCd: ID!
+    kamokuName: String
+    kariKubun: Boolean
+  }
 
-`
+  input UserInput {
+    userName: String
+    mail: String
+  }
+`;

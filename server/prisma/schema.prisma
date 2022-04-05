@@ -75,7 +75,7 @@ model Shiwake {
   kashiGrpCd    Int
   kashiGrpName  String
   kashiKubun    Boolean
-  tekiyou       String
+  tekiyou       String?
   hasseiDate    DateTime
   createdAt     DateTime @default(now())
   user          User     @relation(fields: [userId], references: [id])
