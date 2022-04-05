@@ -15,7 +15,10 @@ const server = new ApolloServer({
     typeDefs,
     resolvers:{
         Query , 
-    }
+    },
+    context: {
+        prisma,
+    },
 })
 
 server.listen().then(({ url }) => {
