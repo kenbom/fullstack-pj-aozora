@@ -94,15 +94,15 @@ model Seisanhyou {
   nendo         Int
   updatedAt     DateTime
   createdAt     DateTime @default(now())
-  user          User     @relation(fields: [userId], references: [id])
+  user          User    @relation(fields: [userId], references: [id])
   userId        Int
 }
 
 model User {
-  id          Int          @id @default(autoincrement())
-  mail        String       @unique
-  userName    String
-  createdAt   DateTime     @default(now())
-  shiwakes    Shiwake[]
-  seisanhyous Seisanhyou[]
+  id         Int          @id @default(autoincrement())
+  mail       String       @unique
+  userName   String
+  createdAt  DateTime     @default(now())
+  Shiwake    Shiwake[]
+  Seisanhyou Seisanhyou[]
 }

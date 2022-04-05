@@ -8,7 +8,12 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    userCreate(user: UserInput!): User
+    userCreate(input:UserInput): User
+  }
+
+  input UserInput {
+    userName: String="nono"
+    mail: String="nono@uso"
   }
 
   type User {
@@ -23,8 +28,5 @@ export const typeDefs = gql`
     kariKubun: Boolean
   }
 
-  input UserInput {
-    userName: String
-    mail: String
-  }
+
 `;
