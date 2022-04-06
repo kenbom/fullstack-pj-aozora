@@ -8,12 +8,21 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    userCreate(input:UserInput): User
+    userCreate(input: UserInput): UserPayload
+  }
+
+  type UserPayload {
+    userErrors: [userError]
+    user: User
+  }
+
+  type userError {
+    message: String
   }
 
   input UserInput {
-    userName: String="nono"
-    mail: String="nono@uso"
+    userName: String
+    mail: String
   }
 
   type User {
@@ -27,6 +36,4 @@ export const typeDefs = gql`
     kamokuName: String
     kariKubun: Boolean
   }
-
-
 `;

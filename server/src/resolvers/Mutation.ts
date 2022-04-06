@@ -1,19 +1,39 @@
+import { User } from ".prisma/client"
 import { Context } from "../index"
 
-// interface UserCreateArgs {
-//     userName: string
-//     mail: string
-// }
+
+interface UserCreateArgs {
+    input: {
+        userName: string
+        mail: string
+    }
+}
+
+interface UserPayloadType {
+    userErrors: {
+        message: String
+    }[],
+    user: User | null
+}
+
 export const Mutation = {
-    userCreate: async (parent: any, { input }: any, { prisma }: Context) => {
-        const {userName, mail} = input
-        await prisma.user.create({
+    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context) : Promise<UserPayloadType> => {
+        const { userName, mail } = input
+
+        if(!userName || !mail)
+        return {
+            userErrors: [],
+            user: null
+        }
+
+        const user = await prisma.user.create({
             data: {
                 userName,
                 mail,
             }
         })
 
-        return null
-    }
-}
+        return {
+            userErrors:[],
+            user: null
+    }}}
