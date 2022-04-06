@@ -17,14 +17,14 @@ interface UserPayloadType {
 }
 
 export const Mutation = {
-    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context) : Promise<UserPayloadType> => {
-        const { userName, mail } = input
+    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
+        const {userName, mail} = input
 
-        if(!userName || !mail)
-        return {
-            userErrors: [],
-            user: null
-        }
+        if (!userName || !mail)
+            return {
+                userErrors: [],
+                user: null
+            }
 
         const user = await prisma.user.create({
             data: {
@@ -32,8 +32,10 @@ export const Mutation = {
                 mail,
             }
         })
-
         return {
-            userErrors:[],
-            user: null
-    }}}
+            userErrors: [],
+            user: user
+
+        }
+    }
+}

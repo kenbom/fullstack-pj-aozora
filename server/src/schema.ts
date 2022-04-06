@@ -8,7 +8,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    userCreate(input: UserInput): UserPayload
+    userCreate(input: UserCreateArgs): UserPayload
   }
 
   type UserPayload {
@@ -20,7 +20,7 @@ export const typeDefs = gql`
     message: String
   }
 
-  input UserInput {
+  input UserCreateArgs {
     userName: String
     mail: String
   }
