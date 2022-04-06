@@ -1,4 +1,4 @@
-import { Context } from "../index"
+import { Context } from "../../index"
 
 export const Query = {
     users: async (_: any, __: any, { prisma }: Context) => {
