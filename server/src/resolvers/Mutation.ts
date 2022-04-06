@@ -17,12 +17,12 @@ interface UserPayloadType {
 }
 
 export const Mutation = {
-    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
+    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType>=> {
         const {userName, mail} = input
 
         if (!userName || !mail)
             return {
-                userErrors: [],
+                userErrors: [{message:"You must provide both userName and mail."}],
                 user: null
             }
 
