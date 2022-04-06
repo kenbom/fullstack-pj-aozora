@@ -1,5 +1,5 @@
 import { User } from ".prisma/client"
-import { Context } from "../index"
+import { Context } from "../../index"
 
 
 interface UserCreateArgs {
@@ -16,13 +16,13 @@ interface UserPayloadType {
     user: User | null
 }
 
-export const Mutation = {
-    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType>=> {
-        const {userName, mail} = input
+export const authResolvers = {
+    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
+        const { userName, mail } = input
 
         if (!userName || !mail)
             return {
-                userErrors: [{message:"You must provide both userName and mail."}],
+                userErrors: [{ message: "You must provide both userName and mail." }],
                 user: null
             }
 
