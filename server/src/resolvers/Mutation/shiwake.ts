@@ -1,11 +1,26 @@
-import { User } from ".prisma/client"
+import { Shiwake } from ".prisma/client"
 import { Context } from "../../index"
 
 
 interface ShiwakeCreateArgs {
     input: {
-        userName: string
-        mail: string
+        torihikiPtnCd: number
+        torihikiName: string
+        kariCd: number
+        kariName: string
+        kariKingaku: number
+        kariGrpCd: number
+        kariGrpName: string
+        kariKubun: boolean
+        kashiCd: number
+        kashiName: string
+        kashiKingaku: number
+        kashiGrpCd: number
+        kashiGrpName: string
+        kashiKubun: boolean
+        tekiyou: string
+        hasseiDate: string
+        userId: number
     }
 }
 
@@ -13,29 +28,27 @@ interface ShiwakePayloadType {
     userErrors: {
         message: String
     }[],
-    user: User | null
+    shiwake: Shiwake | null
 }
 
-export const shiwakeRosolver = {
-    userCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma }: Context): Promise<ShiwakePayloadType> => {
-        const { userName, mail } = input
+export const shiwakeRosolvers = {
+    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma }: Context): Promise<ShiwakePayloadType> => {
 
-        if (!userName || !mail)
-            return {
-                userErrors: [{ message: "You must provide both userName and mail." }],
-                user: null
-            }
+        // if (!userName || !mail)
+        //     return {
+        //         userErrors: [{ message: "You must provide both userName and mail." }],
+        //         user: null
+        //     }
 
-        const user = await prisma.user.create({
+        const shiwake = await prisma.shiwake.create({
             data: {
-                userName,
-                mail,
+                ...input
             }
         })
         return {
             userErrors: [],
-            user: user
+            shiwake: shiwake
 
         }
-    } 
+    }
 }
