@@ -9,7 +9,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    userCreate(input: UserCreateArgs): UserPayload
+    signup(input: UserCreateArgs): UserPayload
     shiwakeCreate(input: ShiwakeCreateArgs): ShiwakePayload
   }
 

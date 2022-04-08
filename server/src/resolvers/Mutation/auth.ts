@@ -1,24 +1,25 @@
 import { User } from ".prisma/client"
 import { Context } from "../../index"
-
+import validator from "validator"
 
 interface UserCreateArgs {
     input: {
         userName: string
         mail: string
+        password: string
     }
 }
 
 interface UserPayloadType {
     userErrors: {
-        message: String
+        message: string
     }[],
     user: User | null
 }
 
 export const authResolvers = {
-    userCreate: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
-        const { userName, mail } = input
+    signup: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
+        const { userName, mail, password } = input
 
         if (!userName || !mail)
             return {
@@ -26,10 +27,20 @@ export const authResolvers = {
                 user: null
             }
 
+        const isEmail = validator.isEmail(mail)
+
+        if (!isEmail) {
+            return {
+                userErrors: [{
+                    message: "Inavalid mail"
+                }],
+                user: null
+            }
+        }
+
         const user = await prisma.user.create({
             data: {
-                userName,
-                mail,
+                ...input
             }
         })
         return {
