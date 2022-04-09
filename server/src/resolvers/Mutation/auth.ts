@@ -2,6 +2,8 @@ import { User } from ".prisma/client"
 import { Context } from "../../index"
 import validator from "validator"
 import bcrypt from "bcryptjs"
+import JWT from "jsonwebtoken"
+import { JSON_SIGNATURE } from "../../keys"
 
 interface UserCreateArgs {
     input: {
@@ -15,7 +17,7 @@ interface UserPayloadType {
     userErrors: {
         message: string
     }[],
-    user: User | null
+    token: string | null
 }
 
 export const authResolvers = {
@@ -25,7 +27,7 @@ export const authResolvers = {
         if (!userName || !mail)
             return {
                 userErrors: [{ message: "You must provide both userName and mail." }],
-                user: null
+                token: null
             }
 
         const isEmail = validator.isEmail(mail)
@@ -34,7 +36,7 @@ export const authResolvers = {
                 userErrors: [{
                     message: "Inavalid mail"
                 }],
-                user: null
+                token: null
             }
         }
 
@@ -44,7 +46,7 @@ export const authResolvers = {
                 userErrors: [{
                     message: "Inavalid password"
                 }],
-                user: null
+                token: null
             }
         }
 
@@ -56,10 +58,20 @@ export const authResolvers = {
                 password: hashedPassword,
             }
         })
+
+        const token = await JWT.sign(
+            {
+                userID: user.id,
+                mail: user.mail,
+            },
+            JSON_SIGNATURE,
+            {
+                expiresIn: 3600000,
+            })
+
         return {
             userErrors: [],
-            user: user
-
+            token,
         }
     }
 }

@@ -15,7 +15,7 @@ export const typeDefs = gql`
 
   type UserPayload {
     userErrors: [userError]
-    user: User
+    token: String
   }
 
   type ShiwakePayload {

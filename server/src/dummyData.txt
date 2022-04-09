@@ -18,3 +18,39 @@
     "hasseiDate":   "2022-01-01T13:50:40+09:00", 
     "userId":       1  }
 }
+
+mutation shiwakeCreate ($shiwakeCreateArgs:ShiwakeCreateArgs) {
+  shiwakeCreate(input:$shiwakeCreateArgs) {
+      shiwake {
+        kariName
+      }
+    }
+}
+
+/////////////////////////////////////////////
+mutation signup($userInput:UserCreateArgs){
+  signup(input:$userInput) {
+    userErrors {
+      message
+    } 
+    user {
+      userName
+      mail
+      password
+    }
+  } 
+}
+{
+  "userInput":{"userName":"nono",
+"mail":"nono@uso.com",
+"password":"password"}
+}
+/////////////////////////////////////////////coco`s token
+{
+  "data": {
+    "signup": {
+      "userErrors": [],
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIwLCJtYWlsIjoiY29jb0B1c28uY29tIiwiaWF0IjoxNjQ5NTM3NDE4LCJleHAiOjE2NTMxMzc0MTh9.TOVVZekFGOUGL3O2BXHHX5uO-MO13kVNOSobMOTF1tQ"
+    }
+  }
+}
