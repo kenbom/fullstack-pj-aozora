@@ -9,11 +9,12 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    signup(input: UserCreateArgs): UserPayload
+    signup(credentials: CredentialsInput, userName: String ): AuthPayload
+    signin(credentials: CredentialsInput): AuthPayload
     shiwakeCreate(input: ShiwakeCreateArgs): ShiwakePayload
   }
 
-  type UserPayload {
+  type AuthPayload {
     userErrors: [userError]
     token: String
   }
@@ -35,22 +36,22 @@ export const typeDefs = gql`
 
   input ShiwakeCreateArgs {
     torihikiPtnCd: Int
-    torihikiName:  String
-    kariCd:        Int
-    kariName:      String
-    kariKingaku:   Int
-    kariGrpCd:     Int
-    kariGrpName:   String
-    kariKubun:     Boolean
-    kashiCd:       Int
-    kashiName:     String
-    kashiKingaku:  Int
-    kashiGrpCd:    Int
-    kashiGrpName:  String
-    kashiKubun:    Boolean
-    tekiyou:       String
-    hasseiDate:    String
-    userId:        Int
+    torihikiName: String
+    kariCd: Int
+    kariName: String
+    kariKingaku: Int
+    kariGrpCd: Int
+    kariGrpName: String
+    kariKubun: Boolean
+    kashiCd: Int
+    kashiName: String
+    kashiKingaku: Int
+    kashiGrpCd: Int
+    kashiGrpName: String
+    kashiKubun: Boolean
+    tekiyou: String
+    hasseiDate: String
+    userId: Int
   }
 
   type User {
@@ -69,21 +70,26 @@ export const typeDefs = gql`
   type Shiwake {
     id: ID!
     torihikiPtnCd: Int
-    torihikiName:  String
-    kariCd:        Int
-    kariName:      String
-    kariKingaku:   Int
-    kariGrpCd:     Int
-    kariGrpName:   String
-    kariKubun:     Boolean
-    kashiCd:       Int
-    kashiName:     String
-    kashiKingaku:  Int
-    kashiGrpCd:    Int
-    kashiGrpName:  String
-    kashiKubun:    Boolean
-    tekiyou:       String
-    hasseiDate:    String
-    userId:        Int
+    torihikiName: String
+    kariCd: Int
+    kariName: String
+    kariKingaku: Int
+    kariGrpCd: Int
+    kariGrpName: String
+    kariKubun: Boolean
+    kashiCd: Int
+    kashiName: String
+    kashiKingaku: Int
+    kashiGrpCd: Int
+    kashiGrpName: String
+    kashiKubun: Boolean
+    tekiyou: String
+    hasseiDate: String
+    userId: Int
+  }
+
+  input CredentialsInput {
+    mail: String
+    password: String
   }
 `;

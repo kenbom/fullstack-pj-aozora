@@ -4,13 +4,21 @@ import validator from "validator"
 import bcrypt from "bcryptjs"
 import JWT from "jsonwebtoken"
 import { JSON_SIGNATURE } from "../../keys"
+import isEmail from "validator/lib/isEmail"
 
-interface UserCreateArgs {
-    input: {
-        userName: string
+interface SignupArgs {
+    credentials: {
         mail: string
         password: string
-    }
+    },
+    userName: string
+}
+
+interface SigninArgs {
+    credentials: {
+        mail: string
+        password: string
+    }, 
 }
 
 interface UserPayloadType {
@@ -21,8 +29,11 @@ interface UserPayloadType {
 }
 
 export const authResolvers = {
-    signup: async (parent: any, { input }: UserCreateArgs, { prisma }: Context): Promise<UserPayloadType> => {
-        const { userName, mail, password } = input
+    signup: async (
+        parent: any,
+        { credentials, userName }: SignupArgs,
+        { prisma }: Context): Promise<UserPayloadType> => {
+        const { mail, password } = credentials
 
         if (!userName || !mail)
             return {
@@ -73,5 +84,26 @@ export const authResolvers = {
             userErrors: [],
             token,
         }
-    }
+},
+
+    signin: async (_: any, {credentials}:SigninArgs, {prisma}:Context):Promise<UserPayloadType> => {
+        const { mail, password } = credentials
+
+        const user = await prisma.user.findUnique({where: {mail}})
+
+        const token =await JWT.sign(
+            {
+                mail: mail,
+                password: password
+            },
+            JSON_SIGNATURE,
+            {
+                expiresIn: 3600000,
+            }) 
+
+        return {
+            userErrors: [],
+            token,
+        }
+    },
 }
