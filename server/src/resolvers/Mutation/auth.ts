@@ -1,10 +1,8 @@
-import { User } from ".prisma/client"
 import { Context } from "../../index"
 import validator from "validator"
 import bcrypt from "bcryptjs"
 import JWT from "jsonwebtoken"
 import { JSON_SIGNATURE } from "../../keys"
-import isEmail from "validator/lib/isEmail"
 
 interface SignupArgs {
     credentials: {
@@ -18,10 +16,10 @@ interface SigninArgs {
     credentials: {
         mail: string
         password: string
-    }, 
+    },
 }
 
-interface UserPayloadType {
+interface UserPayload {
     userErrors: {
         message: string
     }[],
@@ -32,7 +30,8 @@ export const authResolvers = {
     signup: async (
         parent: any,
         { credentials, userName }: SignupArgs,
-        { prisma }: Context): Promise<UserPayloadType> => {
+        { prisma }: Context
+    ): Promise<UserPayload> => {
         const { mail, password } = credentials
 
         if (!userName || !mail)
@@ -62,6 +61,7 @@ export const authResolvers = {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
+
         const user = await prisma.user.create({
             data: {
                 userName,
@@ -70,40 +70,43 @@ export const authResolvers = {
             }
         })
 
-        const token = await JWT.sign(
-            {
-                userID: user.id,
-                mail: user.mail,
-            },
-            JSON_SIGNATURE,
-            {
-                expiresIn: 3600000,
-            })
-
         return {
             userErrors: [],
-            token,
+            token: JWT.sign({ userId: user.id }, JSON_SIGNATURE, {
+                expiresIn: 3600000
+            }),
         }
-},
+    },
 
-    signin: async (_: any, {credentials}:SigninArgs, {prisma}:Context):Promise<UserPayloadType> => {
+    signin: async (_: any,
+        { credentials }: SigninArgs,
+        { prisma }: Context
+    ): Promise<UserPayload> => {
         const { mail, password } = credentials
 
-        const user = await prisma.user.findUnique({where: {mail}})
+        const user = await prisma.user.findUnique({ where: { mail } })
 
-        const token =await JWT.sign(
-            {
-                mail: mail,
-                password: password
-            },
-            JSON_SIGNATURE,
-            {
-                expiresIn: 3600000,
-            }) 
+        if (!user) {
+            return {
+                userErrors: [{ message: "Invalid credentials" }],
+                token: null,
+            }
+        }
+
+        //@ts-ignore
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        if(!isMatch) {
+            return{
+                userErrors:[{message:"InvalidCredentials"}],
+                token:null,
+            }
+        }
 
         return {
             userErrors: [],
-            token,
+            token: JWT.sign({ userId:user.id}, JSON_SIGNATURE,{
+                expiresIn: 3600000}),
         }
     },
 }

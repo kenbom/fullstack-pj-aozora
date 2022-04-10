@@ -108,5 +108,3 @@ model User {
   Shiwake    Shiwake[]
   Seisanhyou Seisanhyou[]
 }
-
-

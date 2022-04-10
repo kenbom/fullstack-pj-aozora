@@ -31,7 +31,7 @@ export const typeDefs = gql`
   input UserCreateArgs {
     userName: String
     mail: String
-    password: String
+    password: String!
   }
 
   input ShiwakeCreateArgs {
@@ -58,7 +58,7 @@ export const typeDefs = gql`
     id: ID!
     userName: String
     mail: String
-    password: String
+    password: String!
   }
 
   type Kamoku {
@@ -89,7 +89,7 @@ export const typeDefs = gql`
   }
 
   input CredentialsInput {
-    mail: String
-    password: String
+    mail: String!
+    password: String!
   }
 `;
