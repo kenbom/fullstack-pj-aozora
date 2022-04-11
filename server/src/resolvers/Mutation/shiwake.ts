@@ -20,7 +20,6 @@ interface ShiwakeCreateArgs {
         kashiKubun: boolean
         tekiyou: string
         hasseiDate: string
-        userId: number
     }
 }
 
@@ -32,17 +31,23 @@ interface ShiwakePayloadType {
 }
 
 export const shiwakeRosolvers = {
-    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma }: Context): Promise<ShiwakePayloadType> => {
-
+    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma, userInfo }: Context): Promise<ShiwakePayloadType> => {
+        
         // if (!userName || !mail)
         //     return {
         //         userErrors: [{ message: "You must provide both userName and mail." }],
         //         user: null
         //     }
-
+        if (!userInfo) {
+            return {
+                userErrors: [{ message: "Not authenticated." }],
+                shiwake: null
+            }
+        }
         const shiwake = await prisma.shiwake.create({
             data: {
-                ...input
+                ...input,
+                userId:userInfo.userId,
             }
         })
         return {

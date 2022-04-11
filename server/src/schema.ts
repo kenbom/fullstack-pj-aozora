@@ -51,7 +51,6 @@ export const typeDefs = gql`
     kashiKubun: Boolean
     tekiyou: String
     hasseiDate: String
-    userId: Int
   }
 
   type User {
@@ -85,7 +84,7 @@ export const typeDefs = gql`
     kashiKubun: Boolean
     tekiyou: String
     hasseiDate: String
-    userId: Int
+    userId: Int 
   }
 
   input CredentialsInput {
