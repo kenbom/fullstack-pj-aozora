@@ -9,10 +9,10 @@ export interface Context {
     prisma: PrismaClient<
         Prisma.PrismaClientOptions,
         never, Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
-    >,
+    >;
     userInfo: {
         userId: number
-    } | null,
+    } | null;
 }
 
 const server = new ApolloServer({
@@ -22,6 +22,7 @@ const server = new ApolloServer({
         Mutation,
     },
     context: async ({ req }: any): Promise<Context> => {
+        console.log(req.headers.authorization)
         const userInfo = await getUserFromToken(req.headers.authorization)
         return {
             prisma,

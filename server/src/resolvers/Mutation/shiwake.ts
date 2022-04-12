@@ -1,4 +1,4 @@
-import { Shiwake } from ".prisma/client"
+import { Prisma, Shiwake } from ".prisma/client"
 import { Context } from "../../index"
 
 
@@ -27,7 +27,7 @@ interface ShiwakePayloadType {
     userErrors: {
         message: String
     }[],
-    shiwake: Shiwake | null
+    shiwake: Shiwake | Prisma.Prisma__ShiwakeClient<Shiwake> | null
 }
 
 export const shiwakeRosolvers = {
@@ -38,6 +38,7 @@ export const shiwakeRosolvers = {
         //         userErrors: [{ message: "You must provide both userName and mail." }],
         //         user: null
         //     }
+        console.log({userInfo})
         if (!userInfo) {
             return {
                 userErrors: [{ message: "Not authenticated." }],
