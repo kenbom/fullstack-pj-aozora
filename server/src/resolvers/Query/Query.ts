@@ -13,5 +13,11 @@ export const Query = {
         const kamokus = await prisma.kamoku.findMany()
 
         return kamokus
+    },
+
+    shiwakes: async (_: any, __: any, { prisma }: Context) => {
+        const kamokus = await prisma.shiwake.findMany()
+
+        return kamokus
     }
 }

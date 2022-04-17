@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {VFC} from 'react'
 import { Box } from "@chakra-ui/react";
+import {useTestFunc} from "./Test"
 
-export const ShiwakeTouroku = (props) => {
+type shiwakeTourokuProps = {
+  name: string
+}
+
+export const ShiwakeTouroku:VFC<shiwakeTourokuProps> = (props) => {
+  const test = useTestFunc()
   return (
     <Box
       //m={4}
@@ -13,6 +19,8 @@ export const ShiwakeTouroku = (props) => {
       textAlign="center"
     >
       {props.name}
+      {test.kamoku}
+      
     </Box>
   );
 }

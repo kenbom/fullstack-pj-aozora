@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { ShiwakeTouroku } from "../components/shiwakeTouroku/ShiwakeTouroku";
 import { KamokuMenu } from "../components/shiwakeTouroku/KamokuMenu";
 import { SeisanHyou } from "../components/seisanHyou/SeisanHyou";
+//import type{kamokuMenuProps} from "../components/shiwakeTouroku/KamokuMenu";
+
 // import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -21,7 +23,7 @@ const Home: NextPage = () => {
           gap={5}
         >
           <GridItem rowSpan={2} colSpan={1}>
-            <KamokuMenu />
+            <KamokuMenu name="Menu" flug={false}> </KamokuMenu>
           </GridItem>
           <GridItem colSpan={1}>
             <ShiwakeTouroku name="Karikata"></ShiwakeTouroku>
@@ -35,7 +37,7 @@ const Home: NextPage = () => {
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

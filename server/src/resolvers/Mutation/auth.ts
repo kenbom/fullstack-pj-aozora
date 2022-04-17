@@ -80,7 +80,7 @@ export const authResolvers = {
 
     signin: async (_: any,
         { credentials }: SigninArgs,
-        { prisma }: Context
+        { prisma, userInfo }: Context
     ): Promise<UserPayload> => {
         const { mail, password } = credentials
 
