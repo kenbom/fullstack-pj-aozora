@@ -6,18 +6,19 @@ interface Shiwake {
   kingaku: number;
 }
 export const useTestFunc = () => {
-  const [test, setTest] = useState({
+  const [test, setTest] = useState<Shiwake>({
     kamoku: "",
     kamokuGroup: 1,
     kingaku: 0,
   });
 
- setTest({
-    kamoku: "費用",
-    kamokuGroup: 2,
+ useEffect(()=> setTest({
+    kamoku: "費用だよ",
+    kamokuGroup: 100,
     kingaku: 1000,
-  });
+  }), []);
 
   return (
-  test)
+   test
+  )
 };
