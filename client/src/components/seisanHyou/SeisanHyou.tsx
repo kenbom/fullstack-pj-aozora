@@ -13,6 +13,7 @@ interface SeisanHyouType{
 export const SeisanHyou:VFC<SeisanHyouType>= (props) => {
   const seisanHyouData = useSeisanHyou()
   console.log(`"tes"`+seisanHyouData)
+
   return (
     <Box
       //m={4}
@@ -24,6 +25,7 @@ export const SeisanHyou:VFC<SeisanHyouType>= (props) => {
       textAlign="center"
     >
       {props.name}
+      {/* {seisanHyouData.map((item)=>{item.kamoku})}  */}
     </Box>
   );
 };

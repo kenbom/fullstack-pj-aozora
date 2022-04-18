@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import { Box } from '@chakra-ui/react'
 import { GraphQLClient, request, gql } from "graphql-request";
 import { BASE_URL } from "../../../config/constants";
+import { animationControls } from 'framer-motion';
+import { useQuery } from "react-query"
 
 interface MiniShiwake {
-    kamokuCd: number,
-    kamoku: string,
-    kingaku: number,
+  kamokuCd: number,
+  kamoku: string,
+  kingaku: number,
 }
 
-async function getSeisanHyou() {
-    const endpoint = BASE_URL
-    const client = new GraphQLClient(endpoint)
-    const query = gql`
+const endpoint = BASE_URL
+const client = new GraphQLClient(endpoint)
+const query = gql`
      {
        shiwakes {
          kariGrpName
@@ -22,21 +23,21 @@ async function getSeisanHyou() {
        }
      }
      `
-    const data = await client.request(query)
-    console.log(data)
+const queryKey = 'shiwakes'
 
-    return data
+async function getSeisanHyou(): Promise<MiniShiwake[]> {
+
+  const data = await client.request(query)
+
+
+  return data
+
 }
 
+export function useSeisanHyou(): MiniShiwake[] {
+  //const fallback = ["testone", "testtwo"]
+  const data = useQuery(queryKey, getSeisanHyou)
+  //console.log(`"hook"` + data[0])
+  return data
 
-
-export const useSeisanHyou = () => {
-
-    const [miniShiwake, setMiniShiwake] = useState<MiniShiwake>({ kamokuCd: 3, kamoku: "費用", kingaku: 10000 });
-
-    const seisanHyouData = getSeisanHyou()
-
-    return (
-        seisanHyouData
-    )
 }
