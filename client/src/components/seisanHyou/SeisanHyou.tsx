@@ -1,18 +1,18 @@
 import React, { ReactElement, VFC } from "react";
 import { Box } from "@chakra-ui/layout";
-import {useSeisanHyou} from "./hooks/useSeisanHyou"
+import { useSeisanHyou } from "./hooks/useSeisanHyou"
 import { request, gql } from "graphql-request";
 import { BASE_URL } from "../../config/constants";
 
-interface SeisanHyouType{
-  name:String
+interface SeisanHyouType {
+  name: String
 }
 
 
 
-export const SeisanHyou:VFC<SeisanHyouType>= (props) => {
+export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
   const seisanHyouData = useSeisanHyou()
-  console.log(`"tes"`+seisanHyouData)
+  console.log(`"tes"` + seisanHyouData)
 
   return (
     <Box
@@ -25,7 +25,7 @@ export const SeisanHyou:VFC<SeisanHyouType>= (props) => {
       textAlign="center"
     >
       {props.name}
-      {/* {seisanHyouData.map((item)=>{item.kamoku})}  */}
+      {/* {seisanHyouData.shiwakes[0].kariGrpName} */}
     </Box>
   );
 };
