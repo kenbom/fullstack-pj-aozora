@@ -11,9 +11,11 @@ interface SeisanHyouType {
 
 
 export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
-  const seisanHyouData = useSeisanHyou()
-  console.log(`"tes"` + seisanHyouData)
-
+  const shiwakesData = useSeisanHyou()
+  console.log(`"tes"` + shiwakesData)
+  const modifiedData = (JSON.stringify(shiwakesData, undefined, 2))
+  const dataArray:Array<object> = shiwakesData.shiwakes
+  const dataArrayTwo = dataArray?.map((item)=>{item.kariGrpName})
   return (
     <Box
       //m={4}
@@ -25,7 +27,10 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
       textAlign="center"
     >
       {props.name}
-      {/* {seisanHyouData.shiwakes[0].kariGrpName} */}
+      <p>try</p>
+      {modifiedData}
+      {JSON.stringify(dataArray, undefined, 2)}
+      {shiwakesData.shiwakes?.map((item) => <p>{item.kariGrpName}</p>)}
     </Box>
   );
 };
