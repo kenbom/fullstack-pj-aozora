@@ -4,13 +4,16 @@ import { ChakraProvider } from '@chakra-ui/react'
 import {QueryClientProvider} from 'react-query'
 import { QueryClient } from "react-query";
 import {ReactQueryDevtools} from "react-query/devtools"
+import {queryClient} from "../react-query/queryClient"
+import {Loading} from "../components/app/Loading"
+import {theme} from "../theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const queryClient = new QueryClient()
   return (
     <ChakraProvider>
       <QueryClientProvider client = {queryClient}>
       <Component {...pageProps} />
+      <Loading />
       <ReactQueryDevtools />
       </QueryClientProvider>
     </ChakraProvider>
