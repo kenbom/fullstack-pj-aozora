@@ -10,7 +10,7 @@ import {theme} from "../theme"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <QueryClientProvider client = {queryClient}>
       <Component {...pageProps} />
       <Loading />
