@@ -14,7 +14,7 @@ const Home: NextPage = () => {
     <div>
       <Box m={10}>
         <Grid
-          h="600px"
+          h="900px"
           w="900px"
           templateRows="repeat(2, 1fr)"
           //templateRows='100px, 100px, 100px'

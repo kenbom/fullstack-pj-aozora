@@ -37,7 +37,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <MenuItem />
+            <MenuItem kamokuGrpCd={4}></MenuItem>
           </AccordionPanel>
         </AccordionItem>
 
@@ -51,7 +51,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <MenuItem />
+            <MenuItem kamokuGrpCd={5}></MenuItem>
           </AccordionPanel>
         </AccordionItem>
 
@@ -65,7 +65,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <MenuItem />
+            <MenuItem kamokuGrpCd={1}></MenuItem>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
@@ -78,7 +78,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <MenuItem />
+            <MenuItem kamokuGrpCd={2}></MenuItem>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
