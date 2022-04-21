@@ -1,7 +1,6 @@
 import { Item } from "framer-motion/types/components/Reorder/Item";
-import React, { ReactPropTypes, VFC } from "react";
+import React, { VFC } from "react";
 import { kamokuList } from "../../config/dataKamokuList";
-import { kamokuMenuProps } from "./KamokuMenu";
 
 type KamokuItem = {
   kamokuGrpCd: number;
@@ -9,9 +8,6 @@ type KamokuItem = {
   kamokuMei: string;
 };
 type KamokuProps = { kamokuGrpCd: number };
-// type KamokuItems = {
-//   kamokuItems: KamokuItem[];
-// };
 
 function selectKamokuGrp(
   kamokuGrpCd: number,
@@ -23,6 +19,10 @@ function selectKamokuGrp(
   return selectedKamokus;
 }
 
+function pushKamokuGrpCd():void{
+  console.log("clicked");
+}
+
 export const MenuItem: VFC<KamokuProps> = (props) => {
   const kamokuItems: KamokuItem[] = kamokuList;
   const { kamokuGrpCd } = props;
@@ -30,7 +30,13 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
   return (
     <div>
       {selectedKamokus.map((item) => {
-        return <p key={item.kamokuCd}> {item.kamokuMei}</p>;
+        return (
+          <h3 key={item.kamokuCd} onClick={() => console.log('clicked')}>
+              <button onClick={pushKamokuGrpCd}>test</button>
+            {""}
+            {item.kamokuMei}
+          </h3>
+        );
       })}
     </div>
   );

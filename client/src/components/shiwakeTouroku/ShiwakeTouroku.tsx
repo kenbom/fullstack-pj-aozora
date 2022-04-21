@@ -19,7 +19,6 @@ export const ShiwakeTouroku:VFC<shiwakeTourokuProps> = (props) => {
       textAlign="center"
     >
       {props.name}
-      {test.kamoku}      
     </Box>
   );
 }
