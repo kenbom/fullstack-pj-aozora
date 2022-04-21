@@ -23,7 +23,7 @@ const Home: NextPage = () => {
           gap={5}
         >
           <GridItem rowSpan={2} colSpan={1}>
-            <KamokuMenu name="Menu" flug={false}> </KamokuMenu>
+            <KamokuMenu name="登録メニュー" flug={false}> </KamokuMenu>
           </GridItem>
           <GridItem colSpan={1}>
             <ShiwakeTouroku name="Karikata"></ShiwakeTouroku>
