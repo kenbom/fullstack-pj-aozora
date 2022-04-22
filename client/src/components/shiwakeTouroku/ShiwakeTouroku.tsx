@@ -1,7 +1,6 @@
 import React, { VFC } from 'react'
 import { Box } from "@chakra-ui/react";
-import { useTestFunc } from "./Test"
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import {strdGrpCd} from '../../store/strdGrpCd'
 
 
@@ -10,7 +9,6 @@ type shiwakeTourokuProps = {
 }
 
 export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
-  const test = useTestFunc()
   const atomGrpCd = useRecoilState(strdGrpCd)
   return (
     <Box
