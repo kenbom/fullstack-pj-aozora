@@ -1,13 +1,17 @@
-import React, {VFC} from 'react'
+import React, { VFC } from 'react'
 import { Box } from "@chakra-ui/react";
-import {useTestFunc} from "./Test"
+import { useTestFunc } from "./Test"
+import { atom, useRecoilState } from 'recoil';
+import {strdGrpCd} from '../../store/strdGrpCd'
+
 
 type shiwakeTourokuProps = {
   name: string
 }
 
-export const ShiwakeTouroku:VFC<shiwakeTourokuProps> = (props) => {
+export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const test = useTestFunc()
+  const atomGrpCd = useRecoilState(strdGrpCd)
   return (
     <Box
       //m={4}
@@ -18,7 +22,7 @@ export const ShiwakeTouroku:VFC<shiwakeTourokuProps> = (props) => {
       color="gray.300"
       textAlign="center"
     >
-      {props.name}
+      {props.name}{atomGrpCd}
     </Box>
   );
 }
