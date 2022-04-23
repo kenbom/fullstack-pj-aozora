@@ -25,12 +25,18 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
       rounded="2xl"
       color="gray.300"
       textAlign="center"
+      overflow="scroll"
     >
       {props.name}
       <p>try</p>
       {modifiedData}
       {JSON.stringify(dataArray, undefined, 2)}
-      {shiwakesData.shiwakes?.map((item) => <p>{item.kariGrpName}</p>)}
+      {JSON.stringify(dataArray, undefined, 2)}
+      {JSON.stringify(dataArray, undefined, 2)}
+      {JSON.stringify(dataArray, undefined, 2)}
+      {shiwakesData.shiwakes?.map((item) => (
+        <p>{item.kariGrpName}</p>
+      ))}
     </Box>
   );
 };

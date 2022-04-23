@@ -14,19 +14,21 @@ const Home: NextPage = () => {
     <div>
       <Box m={10}>
         <Grid
-          h="800px"
-          w="800px"
+          h="850px"
+          w="850px"
           templateRows="repeat(8, 1fr)"
           //templateRows='100px, 100px, 100px'
           // templateColumns='repeat(5, 1fr)'
           templateColumns="repeat(3, 1fr)"
           gap={5}
+          // bgColor="red"
+          // color="black"
         >
           <GridItem rowSpan={8} colSpan={1}>
-            <KamokuMenu name="取引メニュー" flug={false}></KamokuMenu>
+            <KamokuMenu name="取引選択" flug={false}></KamokuMenu>
           </GridItem>
           <GridItem rowSpan={3} colSpan={2}>
-            <ShiwakeTouroku name="B/S転記"></ShiwakeTouroku>
+            <ShiwakeTouroku name="取引登録"></ShiwakeTouroku>
           </GridItem>
           <GridItem rowSpan={5} colSpan={2}>
             <SeisanHyou name="取引履歴"></SeisanHyou>

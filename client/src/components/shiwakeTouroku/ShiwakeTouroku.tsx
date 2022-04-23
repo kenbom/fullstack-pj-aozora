@@ -29,6 +29,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
         textAlign="center"
       >
         {props.name}
+        {atomGrpCd}
         <Grid
           h="270px"
           w="100%"
@@ -41,34 +42,33 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={3}
             colSpan={2}
-            h="100%"
-            w="100%"
+            // h="100%"
+            // w="100%"
             border="1px"
-            rounded="2xl"
+            // rounded="2xl"
             color="gray.100"
-            textAlign="center"
+            // textAlign="center"
           ></GridItem>
           <GridItem
             colSpan={2}
-            h="100%"
-            w="100%"
+            // h="100%"
+            // w="100%"
             border="1px"
-            rounded="2xl"
+            // rounded="2xl"
             color="gray.100"
             textAlign="center"
           ></GridItem>
           <GridItem
             // rowSpan={1}
             colSpan={2}
-            h="100%"
-            w="100%"
+            // h="100%"
+            // w="100%"
             border="1px"
-            rounded="2xl"
+            // rounded="2xl"
             color="gray.100"
             textAlign="center"
           ></GridItem>
         </Grid>
-        {/* {props.name}{atomGrpCd} */}
       </Box>
     </div>
   );
