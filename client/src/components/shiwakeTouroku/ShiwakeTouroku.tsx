@@ -30,7 +30,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
       >
         {props.name}
         <Grid
-          h="450px"
+          h="270px"
           w="100%"
           templateRows="repeat(5, 1fr)"
           //templateRows='100px, 100px, 100px'
