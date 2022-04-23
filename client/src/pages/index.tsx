@@ -23,14 +23,10 @@ const Home: NextPage = () => {
           gap={5}
         >
           <GridItem rowSpan={2} colSpan={1}>
-            <KamokuMenu name="取引メニュー" flug={false}>
-            </KamokuMenu>
+            <KamokuMenu name="取引メニュー" flug={false}></KamokuMenu>
           </GridItem>
-          <GridItem colSpan={1}>
-            <ShiwakeTouroku name="B/S転記：借方"></ShiwakeTouroku>
-          </GridItem>
-          <GridItem colSpan={1}>
-            <ShiwakeTouroku name="B/S転記：貸方"></ShiwakeTouroku>
+          <GridItem rowSpan={1} colSpan={2}>
+            <ShiwakeTouroku name="B/S転記"></ShiwakeTouroku>
           </GridItem>
           <GridItem rowSpan={1} colSpan={2}>
             <SeisanHyou name="取引履歴"></SeisanHyou>
