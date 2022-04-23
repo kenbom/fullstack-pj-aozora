@@ -2,6 +2,9 @@ import React, { VFC } from 'react'
 import { Box } from "@chakra-ui/react";
 import { useRecoilState } from 'recoil';
 import {strdGrpCd} from '../../store/strdGrpCd'
+import {strdMenuItem} from '../../store/strdGrpCd'
+import type {StrdMenuItem} from '../../store/strdGrpCd'
+
 
 
 type shiwakeTourokuProps = {
@@ -10,6 +13,11 @@ type shiwakeTourokuProps = {
 
 export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const atomGrpCd = useRecoilState(strdGrpCd)
+  const atomMenuItem = useRecoilState(strdMenuItem)
+  console.log(atomMenuItem)
+  const [recoiledMenuItem]=atomMenuItem
+  console.log(recoiledMenuItem)
+  // console.log(recoiledMenuItem.kamokuMei)
   return (
     <Box
       //m={4}
@@ -20,7 +28,8 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
       color="gray.300"
       textAlign="center"
     >
-      {props.name}{atomGrpCd}
+      {/* {props.name}{atomGrpCd} */}
+      {props.name}
     </Box>
   );
 }

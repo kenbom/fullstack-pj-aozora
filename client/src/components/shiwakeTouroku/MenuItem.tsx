@@ -1,7 +1,7 @@
 import { Item } from "framer-motion/types/components/Reorder/Item";
 import React, { VFC } from "react";
 import { kamokuList } from "../../config/dataKamokuList";
-import { strdGrpCd } from '../../store/strdGrpCd'
+import { strdGrpCd, strdMenuItem } from '../../store/strdGrpCd'
 import { atom, useRecoilState } from 'recoil';
 
 
@@ -29,12 +29,14 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
   const { kamokuGrpCd } = props;
   const selectedKamokus = selectKamokuGrp(kamokuGrpCd, kamokuItems);
   const [changedGrpCd, setChangedGrpCd] = useRecoilState(strdGrpCd)
+  const [changedMenuItem, setChangedMenuItem] = useRecoilState(strdMenuItem)
 
   return (
     <div>
       {selectedKamokus.map((item) => {
         return (
-          <h3 key={item.kamokuCd} onClick={() => { setChangedGrpCd( kamokuGrpCd )}}>
+          //<h3 key={item.kamokuCd} onClick={() => { setChangedGrpCd( item.kamokuCd )}}>
+            <h3 key={item.kamokuCd} onClick={() => { setChangedMenuItem(item)}}>
             {item.kamokuMei}
           </h3>
         );
