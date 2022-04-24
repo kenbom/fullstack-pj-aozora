@@ -22,7 +22,8 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
       width="100%"
       border="1px"
       rounded="2xl"
-      color="gray.300"
+      color="gray.700"
+      fontSize="sm"
       textAlign="center"
     >
       {props.name}

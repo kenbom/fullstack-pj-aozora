@@ -12,10 +12,11 @@ import { SeisanHyou } from "../components/seisanHyou/SeisanHyou";
 const Home: NextPage = () => {
   return (
     <div>
+
       <Box m={10}>
         <Grid
-          h="850px"
-          w="850px"
+          h="750px"
+          w="750px"
           templateRows="repeat(8, 1fr)"
           //templateRows='100px, 100px, 100px'
           // templateColumns='repeat(5, 1fr)'

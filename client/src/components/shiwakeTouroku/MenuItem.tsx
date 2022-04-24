@@ -3,6 +3,7 @@ import React, { VFC } from "react";
 import { kamokuList } from "../../config/dataKamokuList";
 import { strdGrpCd, strdMenuItem } from '../../store/strdGrpCd'
 import { atom, useRecoilState } from 'recoil';
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 
 
 type KamokuItem = {
@@ -36,9 +37,9 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
       {selectedKamokus.map((item) => {
         return (
           //<h3 key={item.kamokuCd} onClick={() => { setChangedGrpCd( item.kamokuCd )}}>
-            <h3 key={item.kamokuCd} onClick={() => { setChangedMenuItem(item)}}>
+            <Box key={item.kamokuCd} _hover={{color:"blue.200"}} onClick={() => { setChangedGrpCd(item.kamokuGrpCd)}} >
             {item.kamokuMei}
-          </h3>
+          </Box>
         );
       })}
     </div>

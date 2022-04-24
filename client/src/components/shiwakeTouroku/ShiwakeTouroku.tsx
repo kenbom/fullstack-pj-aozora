@@ -25,13 +25,13 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
         w="100%"
         border="1px"
         rounded="2xl"
-        color="gray.300"
+        color="gray.700"
+        fontSize="sm"
         textAlign="center"
       >
-        {props.name}
-        {atomGrpCd}
+        {props.name} {atomGrpCd}
         <Grid
-          h="270px"
+          h="250px"
           w="100%"
           templateRows="repeat(5, 1fr)"
           //templateRows='100px, 100px, 100px'
