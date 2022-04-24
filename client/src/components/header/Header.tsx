@@ -3,10 +3,10 @@ import { Box, Flex, Spacer } from '@chakra-ui/react'
 
 export const Header = () => {
     return (
-        <Box w= "740px" borderBottom="1px" borderBottomColor="blue.300" m={2}>
+        <Box w= "740px" borderBottom="2px" borderBottomColor="blue.300" m={2}>
            <Flex>
                 <Box m={2} fontSize="xl"　>
-                超易！青色申告
+                らくらく！青色申告
             </Box>
             <Spacer />
             <Box　m={2}>
