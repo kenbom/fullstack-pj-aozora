@@ -3,8 +3,9 @@ import { Box } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdGrpCd";
 import { strdMenuItem } from "../../store/strdGrpCd";
-import type { StrdMenuItem } from "../../store/strdGrpCd";
+// import type { StrdMenuItem } from "../../store/strdGrpCd";
 import { Grid, GridItem } from "@chakra-ui/react";
+import type {StrdMenuItem} from "../../store/strdGrpCd"
 
 type shiwakeTourokuProps = {
   name: string;
@@ -12,11 +13,12 @@ type shiwakeTourokuProps = {
 
 export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const atomGrpCd = useRecoilState(strdGrpCd);
-  const atomMenuItem = useRecoilState(strdMenuItem);
+  const [atomMenuItem, setAtomMenuItem] = useRecoilState<StrdMenuItem>({kamokuGrpCd:0,kamokuCd:0,kamokuMei:"テスト費用"});
   console.log(atomMenuItem);
-  const [recoiledMenuItem] = atomMenuItem;
-  console.log(recoiledMenuItem);
-  // console.log(recoiledMenuItem.kamokuMei)
+  // const [recoiledMenuItem] = atomMenuItem;
+  // console.log(recoiledMenuItem);
+  console.log(atomMenuItem?.kamokuMei)
+
   return (
     <div>
       <Box
