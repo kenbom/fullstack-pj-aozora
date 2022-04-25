@@ -13,5 +13,5 @@ export const strdGrpCd = atom<number>({
 
 export const strdMenuItem = atom<StrdMenuItem>({
   key: 'strdMenuItem',
-  default: undefined,
+  default: {kamokuGrpCd:0, kamokuCd:0, kamokuMei:"未定"} 
 })

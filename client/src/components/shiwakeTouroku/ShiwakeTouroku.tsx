@@ -13,7 +13,7 @@ type shiwakeTourokuProps = {
 
 export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const atomGrpCd = useRecoilState(strdGrpCd);
-  const [atomMenuItem, setAtomMenuItem] = useRecoilState<StrdMenuItem>({kamokuGrpCd:0,kamokuCd:0,kamokuMei:"テスト費用"});
+  const [atomMenuItem, setAtomMenuItem] = useRecoilState(strdMenuItem)
   console.log(atomMenuItem);
   // const [recoiledMenuItem] = atomMenuItem;
   // console.log(recoiledMenuItem);
@@ -31,7 +31,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
         fontSize="sm"
         textAlign="center"
       >
-        {props.name} {atomGrpCd}
+        {props.name} {atomMenuItem.kamokuMei}
         <Grid
           h="250px"
           w="100%"
