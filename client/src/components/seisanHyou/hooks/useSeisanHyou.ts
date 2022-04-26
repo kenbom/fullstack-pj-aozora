@@ -38,7 +38,7 @@ async function getSeisanHyou(): Promise<Shiwakes> {
 }
 
 export function useSeisanHyou(): any {
-const fallback = []
+  const fallback = []
   const { data = fallback } = useQuery(queryKey, getSeisanHyou)
   // console.log(data)
   return data
