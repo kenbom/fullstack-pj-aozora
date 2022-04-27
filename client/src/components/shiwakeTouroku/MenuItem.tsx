@@ -2,7 +2,7 @@ import { Item } from "framer-motion/types/components/Reorder/Item";
 import React, { VFC } from "react";
 import { kamokuList } from "../../config/dataKamokuList";
 import { strdGrpCd, strdMenuItem } from "../../store/strdGrpCd";
-import { atom, useRecoilState } from "recoil";
+import { atom, useRecoilState, useSetRecoilState } from "recoil";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { useSetShiwakeTouroku } from "./hooks/useSetShiwakeTouroku";
 
@@ -28,10 +28,12 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
   const { kamokuGrpCd } = props;
   const selectedKamokus = selectKamokuGrp(kamokuGrpCd, kamokuItems);
   const [changedGrpCd, setChangedGrpCd] = useRecoilState(strdGrpCd);
-  const [changedMenuItem, setChangedMenuItem] = useRecoilState(strdMenuItem);
-  const filledMenuItem = useSetShiwakeTouroku(item);
-  function onClickHandler(kamokuGrpCd: KamokuItem) {
-    // console.log(kamokuGrpCd);
+  // const [changedMenuItem, setChangedMenuItem] = useRecoilState(strdMenuItem);
+  const setChangedMenuItem = useSetRecoilState(strdMenuItem);
+  // const filledMenuItem = useSetShiwakeTouroku(item);
+  function handleOnClick(kamokuItem: KamokuItem): void {
+    const testKamokuItem = { ...kamokuItem, kamokuMei: "絶対これ" }
+    setChangedMenuItem(testKamokuItem)
   }
   // const filledShiwakeTouroku = useSetShiwakeTouroku()
   return (
@@ -39,14 +41,7 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
       {selectedKamokus.map((item) => {
         return (
           //<h3 key={item.kamokuCd} onClick={() => { setChangedGrpCd( item.kamokuCd )}}>
-          <Box
-            key={item.kamokuCd}
-            _hover={{ color: "blue.200" }}
-            onClick={() => {
-              onClickHandler(item);
-              
-            }}
-          >
+          <Box key={item.kamokuCd} _hover={{ color: "blue.200" }} onClick={() => { handleOnClick(item) }} >
             {item.kamokuMei}
           </Box>
         );
