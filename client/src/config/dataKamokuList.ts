@@ -1,317 +1,317 @@
 export const kamokuList = [
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 502,
-        "kamokuMei": "仕入"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 502,
+        "kamokuMenuMei": "仕入"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 503,
-        "kamokuMei": "製造原価"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 503,
+        "kamokuMenuMei": "製造原価"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 504,
-        "kamokuMei": "期末棚卸高"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 504,
+        "kamokuMenuMei": "期末棚卸高"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 505,
-        "kamokuMei": "租税公課"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 505,
+        "kamokuMenuMei": "租税公課"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 506,
-        "kamokuMei": "荷造運賃"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 506,
+        "kamokuMenuMei": "荷造運賃"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 507,
-        "kamokuMei": "水道光熱費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 507,
+        "kamokuMenuMei": "水道光熱費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 508,
-        "kamokuMei": "旅費交通費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 508,
+        "kamokuMenuMei": "旅費交通費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 509,
-        "kamokuMei": "通信費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 509,
+        "kamokuMenuMei": "通信費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 510,
-        "kamokuMei": "広告宣伝費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 510,
+        "kamokuMenuMei": "広告宣伝費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 511,
-        "kamokuMei": "接待交際費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 511,
+        "kamokuMenuMei": "接待交際費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 512,
-        "kamokuMei": "損害保険料"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 512,
+        "kamokuMenuMei": "損害保険料"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 513,
-        "kamokuMei": "修繕費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 513,
+        "kamokuMenuMei": "修繕費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 514,
-        "kamokuMei": "消耗品費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 514,
+        "kamokuMenuMei": "消耗品費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 515,
-        "kamokuMei": "減価償却費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 515,
+        "kamokuMenuMei": "減価償却費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 516,
-        "kamokuMei": "福利厚生費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 516,
+        "kamokuMenuMei": "福利厚生費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 517,
-        "kamokuMei": "給料賃金"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 517,
+        "kamokuMenuMei": "給料賃金"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 518,
-        "kamokuMei": "外注工賃"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 518,
+        "kamokuMenuMei": "外注工賃"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 519,
-        "kamokuMei": "利子割引料"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 519,
+        "kamokuMenuMei": "利子割引料"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 520,
-        "kamokuMei": "地代家賃"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 520,
+        "kamokuMenuMei": "地代家賃"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 521,
-        "kamokuMei": "貸倒金"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 521,
+        "kamokuMenuMei": "貸倒金"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 522,
-        "kamokuMei": "管理費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 522,
+        "kamokuMenuMei": "管理費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 523,
-        "kamokuMei": "会費等"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 523,
+        "kamokuMenuMei": "会費等"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 524,
-        "kamokuMei": "新聞図書費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 524,
+        "kamokuMenuMei": "新聞図書費"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 525,
-        "kamokuMei": "リース・賃借料"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 525,
+        "kamokuMenuMei": "リース・賃借料"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 526,
-        "kamokuMei": "専従者給与"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 526,
+        "kamokuMenuMei": "専従者給与"
     },
     {
-        "kamokuGrpCd": 5,
-        "kamokuCd": 530,
-        "kamokuMei": "雑費"
+        "kamokuMenuGrpCd": 5,
+        "kamokuMenuCd": 530,
+        "kamokuMenuMei": "雑費"
     },
     {
-        "kamokuGrpCd": 4,
-        "kamokuCd": 401,
-        "kamokuMei": "売上(報酬）"
+        "kamokuMenuGrpCd": 4,
+        "kamokuMenuCd": 401,
+        "kamokuMenuMei": "売上(報酬）"
     },
     {
-        "kamokuGrpCd": 4,
-        "kamokuCd": 402,
-        "kamokuMei": "雑収入"
+        "kamokuMenuGrpCd": 4,
+        "kamokuMenuCd": 402,
+        "kamokuMenuMei": "雑収入"
     },
     {
-        "kamokuGrpCd": 4,
-        "kamokuCd": 403,
-        "kamokuMei": "その他収益"
+        "kamokuMenuGrpCd": 4,
+        "kamokuMenuCd": 403,
+        "kamokuMenuMei": "その他収益"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 101,
-        "kamokuMei": "現金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 101,
+        "kamokuMenuMei": "現金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 102,
-        "kamokuMei": "当座預金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 102,
+        "kamokuMenuMei": "当座預金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 103,
-        "kamokuMei": "普通預金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 103,
+        "kamokuMenuMei": "普通預金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 104,
-        "kamokuMei": "通知預金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 104,
+        "kamokuMenuMei": "通知預金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 105,
-        "kamokuMei": "定期預金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 105,
+        "kamokuMenuMei": "定期預金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 106,
-        "kamokuMei": "受取手形"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 106,
+        "kamokuMenuMei": "受取手形"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 107,
-        "kamokuMei": "売掛金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 107,
+        "kamokuMenuMei": "売掛金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 108,
-        "kamokuMei": "有価証券"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 108,
+        "kamokuMenuMei": "有価証券"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 109,
-        "kamokuMei": "棚卸資産"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 109,
+        "kamokuMenuMei": "棚卸資産"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 110,
-        "kamokuMei": "前払金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 110,
+        "kamokuMenuMei": "前払金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 111,
-        "kamokuMei": "貸付金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 111,
+        "kamokuMenuMei": "貸付金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 112,
-        "kamokuMei": "未収入金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 112,
+        "kamokuMenuMei": "未収入金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 113,
-        "kamokuMei": "仮払源泉税"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 113,
+        "kamokuMenuMei": "仮払源泉税"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 114,
-        "kamokuMei": "その他の資産"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 114,
+        "kamokuMenuMei": "その他の資産"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 121,
-        "kamokuMei": "建物"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 121,
+        "kamokuMenuMei": "建物"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 122,
-        "kamokuMei": "建物付属設備"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 122,
+        "kamokuMenuMei": "建物付属設備"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 123,
-        "kamokuMei": "機械装置"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 123,
+        "kamokuMenuMei": "機械装置"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 124,
-        "kamokuMei": "車両運搬具"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 124,
+        "kamokuMenuMei": "車両運搬具"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 125,
-        "kamokuMei": "工具器具備品"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 125,
+        "kamokuMenuMei": "工具器具備品"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 126,
-        "kamokuMei": "土地"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 126,
+        "kamokuMenuMei": "土地"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 127,
-        "kamokuMei": "敷金保証金"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 127,
+        "kamokuMenuMei": "敷金保証金"
     },
     {
-        "kamokuGrpCd": 1,
-        "kamokuCd": 128,
-        "kamokuMei": "その他投資"
+        "kamokuMenuGrpCd": 1,
+        "kamokuMenuCd": 128,
+        "kamokuMenuMei": "その他投資"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 201,
-        "kamokuMei": "支払手形"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 201,
+        "kamokuMenuMei": "支払手形"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 202,
-        "kamokuMei": "買掛金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 202,
+        "kamokuMenuMei": "買掛金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 203,
-        "kamokuMei": "借入金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 203,
+        "kamokuMenuMei": "借入金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 204,
-        "kamokuMei": "未払金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 204,
+        "kamokuMenuMei": "未払金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 205,
-        "kamokuMei": "前受金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 205,
+        "kamokuMenuMei": "前受金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 206,
-        "kamokuMei": "預り金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 206,
+        "kamokuMenuMei": "預り金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 207,
-        "kamokuMei": "貸倒引当金"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 207,
+        "kamokuMenuMei": "貸倒引当金"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 208,
-        "kamokuMei": "その他負債"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 208,
+        "kamokuMenuMei": "その他負債"
     },
     {
-        "kamokuGrpCd": 2,
-        "kamokuCd": 209,
-        "kamokuMei": "共有者持分"
+        "kamokuMenuGrpCd": 2,
+        "kamokuMenuCd": 209,
+        "kamokuMenuMei": "共有者持分"
     },
     {
-        "kamokuGrpCd": 3,
-        "kamokuCd": 301,
-        "kamokuMei": "事業主借勘定"
+        "kamokuMenuGrpCd": 3,
+        "kamokuMenuCd": 301,
+        "kamokuMenuMei": "事業主借勘定"
     },
     {
-        "kamokuGrpCd": 3,
-        "kamokuCd": 302,
-        "kamokuMei": "事業主貸勘定"
+        "kamokuMenuGrpCd": 3,
+        "kamokuMenuCd": 302,
+        "kamokuMenuMei": "事業主貸勘定"
     },
     {
-        "kamokuGrpCd": 3,
-        "kamokuCd": 303,
-        "kamokuMei": "元入金"
+        "kamokuMenuGrpCd": 3,
+        "kamokuMenuCd": 303,
+        "kamokuMenuMei": "元入金"
     },
 ];
