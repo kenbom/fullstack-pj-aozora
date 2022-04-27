@@ -68,10 +68,10 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // w="100%"
             border="1px"
             // rounded="2xl"
-            color="gray.100"
+            color="gray.500"
             textAlign="center">
-            {atomShiwakeData.kariKamokuMei}
-            {atomShiwakeData.kashiKamokuMei}
+            借方：{atomShiwakeData.kariKamokuMei}
+            貸方：{atomShiwakeData.kashiKamokuMei}
           </GridItem>
           <GridItem
             // rowSpan={1}
