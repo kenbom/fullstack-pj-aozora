@@ -2,7 +2,7 @@ import React, { VFC, useState } from "react";
 import { Box, Button } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdGrpCd";
-import { strdMenuItem } from "../../store/strdGrpCd";
+import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
 // import type { StrdMenuItem } from "../../store/strdGrpCd";
 import { Grid, GridItem } from "@chakra-ui/react";
 import type { StrdMenuItem } from "../../store/strdGrpCd";
@@ -14,6 +14,7 @@ type shiwakeTourokuProps = {
 export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const atomGrpCd = useRecoilState(strdGrpCd);
   const [atomMenuItem, setAtomMenuItem] = useRecoilState(strdMenuItem);
+  const [atomShiwakeData, setAtomShiwakeData] = useRecoilState(strdShiwakeData)
   const [testItems, setTestItems] = useState({
     kamokuCd: 0,
     kamokuMei: "unclicked",
@@ -69,7 +70,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // rounded="2xl"
             color="gray.100"
             textAlign="center">
-            {atomMenuItem.kamokuMei}
+            {atomShiwakeData.kariKamokuMei}
           </GridItem>
           <GridItem
             // rowSpan={1}
