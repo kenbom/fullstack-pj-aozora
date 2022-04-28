@@ -1,11 +1,13 @@
 import React, { VFC, useState } from "react";
-import { Box, Button, HStack } from "@chakra-ui/react";
+import { Box, Button, HStack, Stack, Input } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdGrpCd";
 import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
 // import type { StrdMenuItem } from "../../store/strdGrpCd";
 import { Grid, GridItem } from "@chakra-ui/react";
 import type { StrdMenuItem } from "../../store/strdGrpCd";
+import "react-datepicker/dist/react-datepicker.css"
+import DatePicker, { CalendarContainer } from "react-datepicker"
 
 type shiwakeTourokuProps = {
   name: string;
@@ -19,16 +21,21 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
     kamokuCd: 0,
     kamokuMei: "unclicked",
   });
+  const Today = new Date();
+  const [date, setDate] = React.useState(Today);
+  const MyContainer = ({ className, children }) => {
+    return (
+      <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
+        <CalendarContainer className={className}>
+          <div style={{ background: "#f0f0f0" }}>
+            What is your favorite day?
+          </div>
+          <div style={{ position: "relative" }}>{children}</div>
+        </CalendarContainer>
+      </div>
+    );
+  };
 
-  function handleTestITems() {
-    setTestItems({ kamokuCd: 100, kamokuMei: "tested" });
-  }
-  // console.log(atomMenuItem);
-  // const [recoiledMenuItem] = atomMenuItem;
-  // console.log(recoiledMenuItem);
-  // console.log(atomMenuItem?.kamokuMei)
-  // setAtomMenuItem({ kamokuGrpCd: 100, kamokuCd: 10000, kamokuMei: "teisei" })
-  // console.log(atomMenuItem)
   return (
     <div>
       <Box
@@ -53,29 +60,32 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           gap={2}
         >
           <GridItem
-            rowSpan={3}
+            rowSpan={1}
             colSpan={2}
             // h="100%"
             // w="100%"
             border="1px"
             // rounded="2xl"
             color="gray.100"
-            // textAlign="center"
+          // textAlign="center"
           >
-            <HStack spacing="24px">
-              <Box w="40px" h="40px" bg="yellow.200">
-                1
+            <HStack spacing="8px">
+              <Box mt={2} ml={10} color="gray.400" bgColor="blue.200">
+                <DatePicker
+                  placeholderText="日付を選択してください"
+                  onChange={selectedDate => { setDate(selectedDate || Today) }}
+                  calendarContainer={MyContainer}
+                  monthsShown={2}
+                  showPreviousMonths
+                />
               </Box>
-              <Box w="40px" h="40px" bg="tomato">
-                2
-              </Box>
-              <Box w="40px" h="40px" bg="pink.100">
-                3
+              <Box>
+                <Input placeholder="取引メモを入力できます" fontSize="sm" ml={12} />
               </Box>
             </HStack>
-            <Button onClick={handleTestITems}>test</Button>
           </GridItem>
           <GridItem
+            rowSpan={3}
             colSpan={2}
             // h="100%"
             // w="100%"
@@ -84,19 +94,16 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             color="gray.500"
             textAlign="center"
           >
-            <HStack spacing="24px">
-              <Box w="40px" h="40px" bg="yellow.200">
-                1
+            <HStack spacing="8px">
+              <Box w="50%" h="140px" bg="yellow.200">
+                借方：{atomShiwakeData.kariKamokuMei}
               </Box>
-              <Box w="40px" h="40px" bg="tomato">
-                2
-              </Box>
-              <Box w="40px" h="40px" bg="pink.100">
-                3
+              <Box w="50%" h="140px" bg="tomato">
+                貸方：{atomShiwakeData.kashiKamokuMei}
               </Box>
             </HStack>
-            借方：{atomShiwakeData.kariKamokuMei}
-            貸方：{atomShiwakeData.kashiKamokuMei}
+
+
           </GridItem>
           <GridItem
             // rowSpan={1}
