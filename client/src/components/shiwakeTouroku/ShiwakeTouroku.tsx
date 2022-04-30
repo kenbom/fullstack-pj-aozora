@@ -8,6 +8,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import type { StrdMenuItem } from "../../store/strdGrpCd";
 import "react-datepicker/dist/react-datepicker.css"
 import DatePicker, { CalendarContainer } from "react-datepicker"
+import ShiwakeLeft from "./ShiwakeLeft"
 
 type shiwakeTourokuProps = {
   name: string;
@@ -84,7 +85,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
               </Box>
             </HStack>
           </GridItem>
-          <GridItem
+          {/* <GridItem
             rowSpan={3}
             colSpan={2}
             // h="100%"
@@ -114,7 +115,8 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // rounded="2xl"
             color="gray.100"
             textAlign="center"
-          ></GridItem>
+          ></GridItem> */}
+          <ShiwakeLeft />
         </Grid>
       </Box>
     </div>
