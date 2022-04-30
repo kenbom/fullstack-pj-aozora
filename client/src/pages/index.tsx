@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Box, Grid, GridItem , Flex} from "@chakra-ui/react";
 import { ShiwakeTouroku } from "../components/shiwakeTouroku/ShiwakeTouroku";
-import { KamokuMenu } from "../components/shiwakeTouroku/KamokuMenu";
+import { KamokuMenu } from "../components/kamokuMenu/KamokuMenu";
 import { SeisanHyou } from "../components/seisanHyou/SeisanHyou";
 import { Header} from '../components/header/Header'
 

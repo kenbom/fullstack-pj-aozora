@@ -9,7 +9,7 @@ import type { StrdMenuItem } from "../../store/strdGrpCd";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 
-export const ShiwakeLeft = () => {
+export const ShiwakeRight = () => {
   const atomGrpCd = useRecoilState(strdGrpCd);
   const [atomMenuItem, setAtomMenuItem] = useRecoilState(strdMenuItem);
   const [atomShiwakeData, setAtomShiwakeData] = useRecoilState(strdShiwakeData);
@@ -26,10 +26,10 @@ export const ShiwakeLeft = () => {
         textAlign="center"
       >
         <HStack spacing="8px">
-          <Box w="50%" h="140px" bg="yellow.200">
+          <Box w="50%" h="140px" bg="tomato">
             借方：{atomShiwakeData.kariKamokuMei}
           </Box>
-          <Box w="50%" h="140px" bg="tomato">
+          <Box w="50%" h="140px" bg="yellow.200">
             貸方：{atomShiwakeData.kashiKamokuMei}
           </Box>
         </HStack>

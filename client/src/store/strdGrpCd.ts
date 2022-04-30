@@ -1,5 +1,5 @@
 import { atom } from 'recoil'
-import type { ShiwakeData } from "../components/shiwakeTouroku/MenuItem"
+import type { ShiwakeData } from "../components/kamokuMenu/MenuItem"
 
 export type StrdMenuItem = {
   kamokuGrpCd: number,
@@ -27,6 +27,6 @@ export const strdShiwakeData = atom<ShiwakeData>({
     kashiKamokuGrpCd: 0,
     kashiKamokuCd: 0,
     kashiKamokuMei: "未定",
-
+    hyoujiPtn: ""
   }
 })

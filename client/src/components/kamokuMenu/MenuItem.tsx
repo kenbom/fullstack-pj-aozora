@@ -23,7 +23,7 @@ export type ShiwakeData = {
   kashiKamokuGrpCd: number;
   kashiKamokuCd: number;
   kashiKamokuMei: string;
-  hyoujiPtn:string;
+  hyoujiPtn: string;
 };
 type KamokuProps = { kamokuMenuGrpCd: number };
 
@@ -57,7 +57,7 @@ function getPreShiwakeData(kamokuItem: KamokuMenuItem): ShiwakeData {
       kashiKamokuGrpCd: kamokuMenuGrpCd,
       kashiKamokuCd: kamokuMenuCd,
       kashiKamokuMei: kamokuMenuMei,
-      hyoujiPtn: "L"
+      hyoujiPtn: "L",
     };
   return {
     kariKamokuGrpCd: 0,
@@ -66,7 +66,7 @@ function getPreShiwakeData(kamokuItem: KamokuMenuItem): ShiwakeData {
     kashiKamokuGrpCd: 0,
     kashiKamokuCd: 0,
     kashiKamokuMei: "未定",
-    hyoujiPtn:"B"
+    hyoujiPtn: "B",
   };
 }
 
