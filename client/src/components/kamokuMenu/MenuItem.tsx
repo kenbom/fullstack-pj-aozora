@@ -4,7 +4,7 @@ import {
   strdGrpCd,
   strdMenuItem,
   strdShiwakeData,
-} from "../../store/strdGrpCd";
+} from "../../store/strdStates";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 
@@ -53,7 +53,7 @@ function getPreShiwakeData(kamokuItem: KamokuMenuItem): ShiwakeData {
       kariKamokuCd: kamokuMenuCd,
       kariKamokuMei: kamokuMenuMei,
       kashiKamokuGrpCd: 3,
-      kashiKamokuCd: 301,
+      kashiKamokuCd: 302,
       kashiKamokuMei: "事業主貸方",
       hyoujiPtn: "L",
     };

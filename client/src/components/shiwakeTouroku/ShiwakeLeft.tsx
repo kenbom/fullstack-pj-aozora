@@ -9,11 +9,11 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { strdGrpCd } from "../../store/strdGrpCd";
-import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
+import { strdGrpCd } from "../../store/strdStates";
+import { strdMenuItem, strdShiwakeData } from "../../store/strdStates";
 // import type { StrdMenuItem } from "../../store/strdGrpCd";
 import { Grid, GridItem } from "@chakra-ui/react";
-import type { StrdMenuItem } from "../../store/strdGrpCd";
+import type { StrdMenuItem } from "../../store/strdStates";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 
@@ -35,7 +35,7 @@ export const ShiwakeLeft = () => {
       >
         <HStack spacing="8px">
           <VStack w="50%">
-            <Center w="100%" h="40px" bg="cyan.50">
+            <Center w="80%" h="40px" bg="cyan.50">
               借方：{atomShiwakeData.kariKamokuMei}
             </Center>
             <Box>
@@ -47,7 +47,7 @@ export const ShiwakeLeft = () => {
             </Box>
           </VStack>
           <VStack w="50%">
-            <Center w="100%" h="40px">
+            <Center w="80%" h="40px">
               貸方：{atomShiwakeData.kashiKamokuMei}
             </Center>
             <Box>

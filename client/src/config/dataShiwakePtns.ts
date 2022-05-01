@@ -11,7 +11,7 @@ export const shiwakePtns = [
 
     {
         kariKamokuGrpCd: 3,
-        kariKamokuCd: 302,
+        kariKamokuCd: 301,
         kariKamokuMei: "事業主借方",
         kashiKamokuGrpCd: kamokuMenuGrpCd,
         kashiKamokuCd: kamokuMenuCd,

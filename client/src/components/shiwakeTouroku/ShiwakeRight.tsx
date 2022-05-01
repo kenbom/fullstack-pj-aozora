@@ -9,11 +9,11 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { strdGrpCd } from "../../store/strdGrpCd";
-import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
+import { strdGrpCd } from "../../store/strdStates";
+import { strdMenuItem, strdShiwakeData } from "../../store/strdStates";
 // import type { StrdMenuItem } from "../../store/strdGrpCd";
 import { Grid, GridItem } from "@chakra-ui/react";
-import type { StrdMenuItem } from "../../store/strdGrpCd";
+import type { StrdMenuItem } from "../../store/strdStates";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 
@@ -35,15 +35,16 @@ export const ShiwakeRight = () => {
       >
         <HStack spacing="8px">
           <VStack w="50%">
-            <Center w="100%" h="40px">
-              借方：{atomShiwakeData.kariKamokuMei}
+            <Center w="80%" h="40px">
+              <Box>借方：{atomShiwakeData.kariKamokuMei}</Box>
             </Center>
+
             <Box>
               <Input placeholder="" fontSize="sm" isDisabled={true} w="100%" />
             </Box>
           </VStack>
           <VStack w="50%">
-            <Center w="100%" h="40px" bg="cyan.50">
+            <Center w="80%" h="40px" bg="cyan.50">
               貸方：{atomShiwakeData.kashiKamokuMei}
             </Center>
             <Box>
@@ -64,7 +65,7 @@ export const ShiwakeRight = () => {
         // border="1px"
         // color="gray.100"
       >
-        <Button w="90%"  mt = {2} pb={1} color="gray.700">
+        <Button w="90%" mt={2} pb={1} color="gray.700">
           {" "}
           登録
         </Button>

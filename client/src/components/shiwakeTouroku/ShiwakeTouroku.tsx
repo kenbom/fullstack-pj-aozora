@@ -2,10 +2,10 @@ import React, { VFC, useState } from "react";
 import { Box, Button, HStack, Stack, Input } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { strdGrpCd } from "../../store/strdGrpCd";
-import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
+import { strdGrpCd } from "../../store/strdStates";
+import { strdMenuItem, strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import type { StrdMenuItem } from "../../store/strdGrpCd";
+import type { StrdMenuItem } from "../../store/strdStates";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 import { ShiwakeLeft } from "./ShiwakeLeft";
@@ -29,11 +29,11 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   const [date, setDate] = React.useState(Today);
   const MyContainer = ({ className, children }) => {
     return (
-      <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
+      <div style={{ color: "#fff" }}>
         <CalendarContainer className={className}>
-          <div style={{ background: "#f0f0f0" }}>
+          {/* <div style={{ background: "#f0f0f0" }}>
             What is your favorite day?
-          </div>
+          </div> */}
           <div style={{ position: "relative" }}>{children}</div>
         </CalendarContainer>
       </div>
@@ -67,21 +67,23 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // border="1px"
             // color="gray.100"
           >
-            <HStack spacing="4px">
-              <Box mt={2} ml={5}>
+            <HStack spacing="1px" mt={2} ml={5}>
+              
                 <HStack>
-                <ArrowRightIcon color="gray.300" />
-                <DatePicker
-                  placeholderText="日付を選択してください"
-                  onChange={(selectedDate) => {
-                    setDate(selectedDate || Today);
-                  }}
-                  calendarContainer={MyContainer}
-                  monthsShown={2}
-                  showPreviousMonths
-                />
+                  <Box></Box>
+                  <ArrowRightIcon color="gray.300" />
+                  <DatePicker
+                    placeholderText=""
+                    onChange={(selectedDate) => {
+                      setDate(selectedDate || Today);
+                    }}
+                    calendarContainer={MyContainer}
+                    monthsShown={2}
+                    showPreviousMonths
+                    selected={date}
+                  ></DatePicker>
                 </HStack>
-              </Box>
+            
               <Box>
                 <Input
                   placeholder="取引メモを入力できます"
@@ -97,13 +99,13 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // border="1px"
             // color="gray.100"
           >
-            {atomShiwakeData.hyoujiPtn === "L" ? 
+            {atomShiwakeData.hyoujiPtn === "L" ? (
               <ShiwakeLeft />
-             : atomShiwakeData.hyoujiPtn === "R" ? 
+            ) : atomShiwakeData.hyoujiPtn === "R" ? (
               <ShiwakeRight />
-             : 
+            ) : (
               <ShiwakeBoth />
-            }
+            )}
           </GridItem>
           {/* <GridItem
             rowSpan={1}
