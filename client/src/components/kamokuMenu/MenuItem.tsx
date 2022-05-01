@@ -1,4 +1,3 @@
-// import { Item } from "framer-motion/types/components/Reorder/Item";
 import React, { VFC } from "react";
 import { kamokuList } from "../../config/dataKamokuList";
 import {
@@ -8,7 +7,6 @@ import {
 } from "../../store/strdGrpCd";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-// import { useSetShiwakeTouroku } from "./hooks/useSetShiwakeTouroku";
 
 export type KamokuMenuItem = {
   kamokuMenuGrpCd: number;
@@ -41,22 +39,22 @@ function getPreShiwakeData(kamokuItem: KamokuMenuItem): ShiwakeData {
   const { kamokuMenuGrpCd, kamokuMenuCd, kamokuMenuMei } = kamokuItem;
   if (kamokuMenuGrpCd === 4)
     return {
-      kariKamokuGrpCd: kamokuMenuGrpCd,
-      kariKamokuCd: kamokuMenuCd,
-      kariKamokuMei: kamokuMenuMei,
-      kashiKamokuGrpCd: 3,
-      kashiKamokuCd: 302,
-      kashiKamokuMei: "事業主貸方",
-      hyoujiPtn: "R",
-    };
-  else if (kamokuMenuGrpCd === 5)
-    return {
       kariKamokuGrpCd: 3,
-      kariKamokuCd: 302,
+      kariKamokuCd: 301,
       kariKamokuMei: "事業主借方",
       kashiKamokuGrpCd: kamokuMenuGrpCd,
       kashiKamokuCd: kamokuMenuCd,
       kashiKamokuMei: kamokuMenuMei,
+      hyoujiPtn: "R",
+    };
+  else if (kamokuMenuGrpCd === 5)
+    return {
+      kariKamokuGrpCd: kamokuMenuGrpCd,
+      kariKamokuCd: kamokuMenuCd,
+      kariKamokuMei: kamokuMenuMei,
+      kashiKamokuGrpCd: 3,
+      kashiKamokuCd: 301,
+      kashiKamokuMei: "事業主貸方",
       hyoujiPtn: "L",
     };
   return {
@@ -75,20 +73,16 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
   const { kamokuMenuGrpCd } = props;
   const selectedKamokus = selectKamokuGrp(kamokuMenuGrpCd, kamokuMenuItems);
   const [changedGrpCd, setChangedGrpCd] = useRecoilState(strdGrpCd);
-  // const [changedMenuItem, setChangedMenuItem] = useRecoilState(strdMenuItem);
   const setChangedMenuItem = useSetRecoilState(strdMenuItem);
   const setPreShiwakeData = useSetRecoilState(strdShiwakeData);
-  // const filledMenuItem = useSetShiwakeTouroku(item);
   function handleOnClick(kamokuItem: KamokuMenuItem): void {
     const preShiwakeData = getPreShiwakeData(kamokuItem);
     setPreShiwakeData(preShiwakeData);
   }
-  // const filledShiwakeTouroku = useSetShiwakeTouroku()
   return (
     <div>
       {selectedKamokus.map((item) => {
         return (
-          //<h3 key={item.kamokuCd} onClick={() => { setChangedGrpCd( item.kamokuCd )}}>
           <Box
             key={item.kamokuMenuCd}
             _hover={{ color: "blue.200" }}

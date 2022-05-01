@@ -1,5 +1,13 @@
 import React, { VFC, useState } from "react";
-import { Box, Button, HStack, Stack, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  HStack,
+  Stack,
+  Input,
+  VStack,
+  Center,
+} from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdGrpCd";
 import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
@@ -20,30 +28,47 @@ export const ShiwakeRight = () => {
         colSpan={2}
         // h="100%"
         // w="100%"
-        border="1px"
+        // border="1px"
         // rounded="2xl"
-        color="gray.500"
+        // color="gray.500"
         textAlign="center"
       >
         <HStack spacing="8px">
-          <Box w="50%" h="140px" bg="tomato">
-            借方：{atomShiwakeData.kariKamokuMei}
-          </Box>
-          <Box w="50%" h="140px" bg="yellow.200">
-            貸方：{atomShiwakeData.kashiKamokuMei}
-          </Box>
+          <VStack w="50%">
+            <Center w="100%" h="40px">
+              借方：{atomShiwakeData.kariKamokuMei}
+            </Center>
+            <Box>
+              <Input placeholder="" fontSize="sm" isDisabled={true} w="100%" />
+            </Box>
+          </VStack>
+          <VStack w="50%">
+            <Center w="100%" h="40px" bg="cyan.50">
+              貸方：{atomShiwakeData.kashiKamokuMei}
+            </Center>
+            <Box>
+              <Box>
+                <Input
+                  placeholder="金額を入力してください"
+                  fontSize="sm"
+                  w="100%"
+                />
+              </Box>
+            </Box>
+          </VStack>
         </HStack>
       </GridItem>
       <GridItem
-        // rowSpan={1}
+        rowSpan={1}
         colSpan={2}
-        // h="100%"
-        // w="100%"
-        border="1px"
-        // rounded="2xl"
-        color="gray.100"
-        textAlign="center"
-      ></GridItem>
+        // border="1px"
+        // color="gray.100"
+      >
+        <Button w="90%"  mt = {2} pb={1} color="gray.700">
+          {" "}
+          登録
+        </Button>
+      </GridItem>
     </>
   );
 };

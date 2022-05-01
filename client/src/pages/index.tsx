@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           <GridItem rowSpan={10} colSpan={1}>
             <KamokuMenu name="取引選択" flug={false}></KamokuMenu>
           </GridItem>
-          <GridItem rowSpan={4} colSpan={2}>
+          <GridItem rowSpan={3} colSpan={2}>
             <ShiwakeTouroku name="取引登録"></ShiwakeTouroku>
           </GridItem>
           <GridItem rowSpan={6} colSpan={2}>

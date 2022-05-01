@@ -19,7 +19,7 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
   return (
     <Box
       //m={4}
-      height="100%"
+      height="525px"
       width="100%"
       border="1px"
       rounded="2xl"

@@ -1,5 +1,6 @@
 import React, { VFC, useState } from "react";
 import { Box, Button, HStack, Stack, Input } from "@chakra-ui/react";
+import { ArrowRightIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdGrpCd";
 import { strdMenuItem, strdShiwakeData } from "../../store/strdGrpCd";
@@ -10,6 +11,7 @@ import DatePicker, { CalendarContainer } from "react-datepicker";
 import { ShiwakeLeft } from "./ShiwakeLeft";
 import { ShiwakeRight } from "./ShiwakeRight";
 import { ShiwakeBoth } from "./ShiwakeBoth";
+import { graphqlSync } from "graphql";
 
 type shiwakeTourokuProps = {
   name: string;
@@ -41,32 +43,34 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
   return (
     <div>
       <Box
-        m={0}
-        h="100%"
+        // m={0}
+        h="220px"
         w="100%"
         border="1px"
         rounded="2xl"
-        color="gray.900"
+        color="gray.700"
         fontSize="sm"
         textAlign="center"
       >
         {props.name}
 
         <Grid
-          h="100%"
+          h="200px"
           w="100%"
           templateRows="repeat(4, 1fr)"
           templateColumns="repeat(2, 1fr)"
-          gap={2}
+          gap={0.5}
         >
           <GridItem
             rowSpan={1}
             colSpan={2}
-            border="1px"
-            color="gray.100"
+            // border="1px"
+            // color="gray.100"
           >
-            <HStack spacing="8px">
-              <Box mt={2} ml={10} color="gray.400" bgColor="blue.200">
+            <HStack spacing="4px">
+              <Box mt={2} ml={5}>
+                <HStack>
+                <ArrowRightIcon color="gray.300" />
                 <DatePicker
                   placeholderText="日付を選択してください"
                   onChange={(selectedDate) => {
@@ -76,6 +80,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
                   monthsShown={2}
                   showPreviousMonths
                 />
+                </HStack>
               </Box>
               <Box>
                 <Input
@@ -89,23 +94,28 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={2}
             colSpan={2}
-            border="1px"
-            color="gray.100"
+            // border="1px"
+            // color="gray.100"
           >
-            {atomShiwakeData.hyoujiPtn === "L" ?
+            {atomShiwakeData.hyoujiPtn === "L" ? 
               <ShiwakeLeft />
-              : atomShiwakeData.hyoujiPtn === "R" ?
-                <ShiwakeRight />
-                : <ShiwakeBoth />}
+             : atomShiwakeData.hyoujiPtn === "R" ? 
+              <ShiwakeRight />
+             : 
+              <ShiwakeBoth />
+            }
           </GridItem>
-          <GridItem
+          {/* <GridItem
             rowSpan={1}
             colSpan={2}
-            border="1px"
-            color="gray.100"
+            // border="1px"
+            // color="gray.100"
           >
-            <Button w="90%"> 登録</Button>
-          </GridItem>
+            <Button w="90%" pb={1} color="gray.700">
+              {" "}
+              登録
+            </Button>
+          </GridItem> */}
         </Grid>
       </Box>
     </div>
