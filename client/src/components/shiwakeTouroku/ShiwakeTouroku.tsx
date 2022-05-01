@@ -53,9 +53,9 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
         {props.name}
 
         <Grid
-          h="250px"
+          h="100%"
           w="100%"
-          templateRows="repeat(5, 1fr)"
+          templateRows="repeat(4, 1fr)"
           templateColumns="repeat(2, 1fr)"
           gap={2}
         >
@@ -86,12 +86,26 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
               </Box>
             </HStack>
           </GridItem>
-          {atomShiwakeData.hyoujiPtn === "L" ? 
-            <ShiwakeLeft />
-           :atomShiwakeData.hyoujiPtn === "R" ? 
-            <ShiwakeRight />
-           :<ShiwakeBoth />
-          }
+          <GridItem
+            rowSpan={2}
+            colSpan={2}
+            border="1px"
+            color="gray.100"
+          >
+            {atomShiwakeData.hyoujiPtn === "L" ?
+              <ShiwakeLeft />
+              : atomShiwakeData.hyoujiPtn === "R" ?
+                <ShiwakeRight />
+                : <ShiwakeBoth />}
+          </GridItem>
+          <GridItem
+            rowSpan={1}
+            colSpan={2}
+            border="1px"
+            color="gray.100"
+          >
+            <Button w="90%"> 登録</Button>
+          </GridItem>
         </Grid>
       </Box>
     </div>
