@@ -39,6 +39,9 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
       </div>
     );
   };
+  const [tekiyou, setTekiyou] = useState("")
+  const changeTekiyou = (e: React.ChangeEvent<HTMLInputElement> ) => { setTekiyou(e.target.value) }
+
 
   return (
     <div>
@@ -64,31 +67,34 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={1}
             colSpan={2}
-            // border="1px"
-            // color="gray.100"
+          // border="1px"
+          // color="gray.100"
           >
             <HStack spacing="1px" mt={2} ml={5}>
-              
-                <HStack>
-                  <Box></Box>
-                  <ArrowRightIcon color="gray.300" />
-                  <DatePicker
-                    placeholderText=""
-                    onChange={(selectedDate) => {
-                      setDate(selectedDate || Today);
-                    }}
-                    calendarContainer={MyContainer}
-                    monthsShown={2}
-                    showPreviousMonths
-                    selected={date}
-                  ></DatePicker>
-                </HStack>
-            
+
+              <HStack>
+                <Box></Box>
+                <ArrowRightIcon color="gray.300" />
+                <DatePicker
+                  placeholderText=""
+                  onChange={(selectedDate) => {
+                    setDate(selectedDate || Today);
+                  }}
+                  calendarContainer={MyContainer}
+                  monthsShown={2}
+                  showPreviousMonths
+                  selected={date}
+                ></DatePicker>
+              </HStack>
+
               <Box>
                 <Input
+
                   placeholder="取引メモを入力できます"
                   fontSize="sm"
                   ml={12}
+                  onChange={changeTekiyou}
+                  type="text"
                 />
               </Box>
             </HStack>
@@ -96,8 +102,8 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={2}
             colSpan={2}
-            // border="1px"
-            // color="gray.100"
+          // border="1px"
+          // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
               <ShiwakeLeft />
