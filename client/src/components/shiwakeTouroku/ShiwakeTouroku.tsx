@@ -106,7 +106,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
-              <ShiwakeLeft />
+              <ShiwakeLeft date={date} tekiyou={tekiyou}/>
             ) : atomShiwakeData.hyoujiPtn === "R" ? (
               <ShiwakeRight />
             ) : (

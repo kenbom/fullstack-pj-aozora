@@ -7,12 +7,18 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 
-export const ShiwakeBoth = () => {
+type ShiwakePropsType = {
+  date: Date;
+  tekiyou?: string;
+};
+
+export const ShiwakeBoth = (props: ShiwakePropsType) => {
   const [atomShiwakeData, setAtomShiwakeData] = useRecoilState(strdShiwakeData);
-  const [kingaku, setKingaku] = useState("");
+  const [kingaku, setKingaku] = useState(undefined);
   const changeKingaku = (e: any) => {
     setKingaku(e.target.value);
   };
+  const { date, tekiyou } = props;
   return (
     <>
       <GridItem rowSpan={3} colSpan={2} textAlign="center">
