@@ -70,21 +70,21 @@ export const typeDefs = gql`
     id: ID!
     torihikiPtnCd: Int
     torihikiName: String
-    kariCd: Int
-    kariName: String
-    kariKingaku: Int
+    kariCd: Int!
+    kariName: String!
+    kariKingaku: Int!
     kariGrpCd: Int
     kariGrpName: String
     kariKubun: Boolean
-    kashiCd: Int
-    kashiName: String
-    kashiKingaku: Int
+    kashiCd: Int!
+    kashiName: String!
+    kashiKingaku: Int!
     kashiGrpCd: Int
     kashiGrpName: String
     kashiKubun: Boolean
     tekiyou: String
-    hasseiDate: String
-    userId: Int 
+    hasseiDate: String!
+    userId: Int!
   }
 
   input CredentialsInput {
