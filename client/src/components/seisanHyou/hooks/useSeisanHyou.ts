@@ -6,15 +6,22 @@ import { animationControls } from 'framer-motion';
 import { useQuery } from "react-query"
 // import type { QueryObserverIdleResul } from "react-query"
 
-interface Shiwakes {
-  shiwakes: MiniShiwake[]
+// interface Shiwakes {
+//   shiwakes: MiniShiwake[]
+// }
+
+export type Shiwakes={
+shiwakes:Shiwake[]
 }
 
-interface MiniShiwake {
-  kariGrpName: string
+export type Shiwake = {
+  id:number
+  createdAt: number
+  hasseiDate: number
   kariName: string
   kashiName: string
   kariKingaku: number
+  tekiyou: string
 }
 
 const queryKey = 'shiwakes'
@@ -25,10 +32,13 @@ async function getSeisanHyou(): Promise<Shiwakes> {
   const query = gql`
      {
        shiwakes {
-         kariGrpName
+         id
+         hasseiDate
+         createdAt
          kariName
          kashiName
          kariKingaku
+         tekiyou
        }
      }
      `
@@ -37,10 +47,10 @@ async function getSeisanHyou(): Promise<Shiwakes> {
   return data
 }
 
-export function useSeisanHyou(): any {
+export function useSeisanHyou(): Shiwakes {
   const fallback = []
   const { data = fallback } = useQuery(queryKey, getSeisanHyou)
-  // console.log(data)
+  //console.log(data)
   return data
 
 }

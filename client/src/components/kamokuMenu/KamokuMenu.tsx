@@ -31,7 +31,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box flex="1" textAlign="left">
+              <Box flex="1" textAlign="left" fontSize="sm">
                 収入取引
               </Box>
               <AccordionIcon />
@@ -45,7 +45,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box flex="1" textAlign="left">
+              <Box flex="1" textAlign="left" fontSize="sm">
                 支出取引
               </Box>
               <AccordionIcon />
@@ -59,7 +59,7 @@ export const KamokuMenu: VFC<kamokuMenuProps> = (props) => {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box flex="1" textAlign="left">
+              <Box flex="1" textAlign="left" fontSize="sm">
                 両建取引
               </Box>
               <AccordionIcon />

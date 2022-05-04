@@ -67,11 +67,10 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={1}
             colSpan={2}
-          // border="1px"
-          // color="gray.100"
+            // border="1px"
+            // color="gray.100"
           >
             <HStack spacing="1px" mt={2} ml={5}>
-
               <HStack>
                 <Box></Box>
                 <ArrowRightIcon color="gray.300" />
@@ -89,10 +88,10 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
 
               <Box>
                 <Input
-
                   placeholder="取引メモを入力できます"
                   fontSize="sm"
-                  ml={12}
+                  ml={102}
+                  mr={-5}
                   onChange={changeTekiyou}
                   type="text"
                 />
@@ -102,15 +101,15 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           <GridItem
             rowSpan={2}
             colSpan={2}
-          // border="1px"
-          // color="gray.100"
+            // border="1px"
+            // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
-              <ShiwakeLeft date={date} tekiyou={tekiyou}/>
+              <ShiwakeLeft date={date} tekiyou={tekiyou} />
             ) : atomShiwakeData.hyoujiPtn === "R" ? (
-              <ShiwakeRight />
+              <ShiwakeRight date={date} tekiyou={tekiyou} />
             ) : (
-              <ShiwakeBoth />
+              <ShiwakeBoth date={date} tekiyou={tekiyou} />
             )}
           </GridItem>
           {/* <GridItem

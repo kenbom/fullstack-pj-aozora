@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <Header />
         <Grid
           h="750px"
-          w="750px"
+          w="900px"
           templateRows="repeat(10, 1fr)"
           //templateRows='100px, 100px, 100px'
           // templateColumns='repeat(5, 1fr)'

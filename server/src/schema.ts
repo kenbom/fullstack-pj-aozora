@@ -85,6 +85,7 @@ export const typeDefs = gql`
     tekiyou: String
     hasseiDate: String!
     userId: Int!
+    createdAt: String
   }
 
   input CredentialsInput {
