@@ -3,6 +3,7 @@ import { Box } from "@chakra-ui/layout";
 import { useSeisanHyou } from "./hooks/useSeisanHyou"
 import { request, gql } from "graphql-request";
 import { BASE_URL } from "../../config/constants";
+import { Item } from "framer-motion/types/components/Reorder/Item";
 
 interface SeisanHyouType {
   name: String
@@ -15,7 +16,7 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
   console.log(`"tes"` + shiwakesData)
   const modifiedData = (JSON.stringify(shiwakesData, undefined, 2))
   const dataArray:Array<object> = shiwakesData.shiwakes
-  const dataArrayTwo = dataArray?.map((item)=>{item.kariGrpName})
+  const dataArrayTwo = dataArray?.map((item)=>{item})
   return (
     <Box
       //m={4}
@@ -35,8 +36,8 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
       {JSON.stringify(dataArray, undefined, 2)}
       {JSON.stringify(dataArray, undefined, 2)}
       {JSON.stringify(dataArray, undefined, 2)}
-      {shiwakesData.shiwakes?.map((item) => (
-        <p>{item.kariGrpName}</p>
+      {shiwakesData.shiwakes?.map((shiwakeItem:any) => (
+        <p key={shiwakeItem.index}>{shiwakeItem.kariGrpName}</p>
       ))}
     </Box>
   );
