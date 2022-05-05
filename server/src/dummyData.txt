@@ -54,3 +54,64 @@ mutation signup($userInput:UserCreateArgs){
     }
   }
 }
+
+/////////////////////////////////////////////5/5
+mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
+  shiwakeCreate(input: $input) {
+    userErrors {
+      message
+    }
+}
+}
+
+//////////////////////////////////////coso token
+"yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTE3MzAyOTQsImV4cCI6MTY1NTMzMDI5NH0.4mwyQbIQPb8u24CM7fA5DwMoaQArmMJrt_wiAa52_UY"
+
+////////////////////////////////////成功したクエリ
+mutation Signin($credentials: CredentialsInput) {
+  signin(credentials: $credentials) {
+    token 
+  }
+}
+////////////////////////上のvariables
+{
+  "credentials": {
+    "mail": "soso@uso.com",
+    "password": "password"
+
+
+  }
+}
+
+////////////////////////////////////上の　soso token
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTE3MzIwNjAsImV4cCI6MTY1NTMzMjA2MH0.MtbSvgLoKzWXzAOKwiv2B2XCHvl8yiLh40wRqb7Izic"
+
+//////////////////////////////////////userIdをハードコーディング（userId:１　とした）して以下のmutationを実行
+＞＞＞＞＞＞＞＞＞＞＞＞＞＞＞＞＞＞＞うまく行った
+mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
+  shiwakeCreate(input: $input) {
+    userErrors {
+      message
+    }
+  }
+}
+
+//////////////////////////////////////上でいけた時に使ったinput
+{ "input":{
+    "torihikiPtnCd": 1,
+    "torihikiName": "費用登録",
+    "kariCd":        101,
+    "kariName": "仕入",   
+    "kariKingaku":  10000, 
+    "kariGrpCd":     10,
+    "kariGrpName":  "費用", 
+    "kariKubun":    true, 
+    "kashiCd":      801, 
+    "kashiName":    "事業主貸",
+    "kashiKingaku": 10000, 
+    "kashiGrpCd":   8, 
+    "kashiGrpName": "資産", 
+    "kashiKubun":   true, 
+    "tekiyou":      "テスト", 
+    "hasseiDate":   "2022-01-01T13:50:40+09:00", 
+}}

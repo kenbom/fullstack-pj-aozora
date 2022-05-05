@@ -38,17 +38,22 @@ export const shiwakeRosolvers = {
         //         userErrors: [{ message: "You must provide both userName and mail." }],
         //         user: null
         //     }
-        console.log({userInfo})
-        if (!userInfo) {
-            return {
-                userErrors: [{ message: "Not authenticated." }],
-                shiwake: null
-            }
-        }
+        // console.log({userInfo})
+        //ここから下６行をコメントアウト　5/5 16:31
+        // if (!userInfo) {
+        //     return {
+        //         userErrors: [{ message: "Not authenticated." }],
+        //         shiwake: null
+        //     }
+        // }
+        console.log("kiteruka?")
         const shiwake = await prisma.shiwake.create({
             data: {
                 ...input,
-                userId:userInfo.userId,
+                //下１行をコメントアウト 　5/5 16:31
+                // userId:userInfo.userId,
+                //下の１行を加えた
+                userId:1
             }
         })
         return {
