@@ -13,6 +13,17 @@ import { ShiwakeRight } from "./ShiwakeRight";
 import { ShiwakeBoth } from "./ShiwakeBoth";
 import { graphqlSync } from "graphql";
 
+export type ShiwakeInput={
+    hasseiDate: Date
+    tekiyou: string
+    kariCd: number
+    kariName: string
+    kariKingaku: number
+    kashiCd: number
+    kashiName: string
+    kashiKingaku: number    
+}
+
 type shiwakeTourokuProps = {
   name: string;
 };

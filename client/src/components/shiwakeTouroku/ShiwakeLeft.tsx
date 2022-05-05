@@ -6,6 +6,8 @@ import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker, { CalendarContainer } from "react-datepicker";
+import { useSetShiwakeTouroku } from "./hooks/useShiwakeTouroku";
+import type {ShiwakeInput} from "./ShiwakeTouroku"
 
 type ShiwakePropsType = {
   date: Date;
@@ -21,6 +23,20 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
   const { date, tekiyou } = props;
   console.log(date);
   console.log(tekiyou);
+  function handleOnClick():any {
+    console.log("hello")
+    const shiwakeInput = {
+      hasseiDate:date,
+      tekiyou:tekiyou,
+      kariCd:atomShiwakeData.kariKamokuCd,
+      kariName:atomShiwakeData.kariKamokuMei,
+      kariKingaku:kingaku,
+      kashiCd:atomShiwakeData.kashiKamokuCd,
+      kashiName:atomShiwakeData.kashiKamokuMei,
+      kashiKingaku:kingaku,
+    }
+    useShiwakeTouroku(shiwakeInput)
+  }
   return (
     <>
       <GridItem rowSpan={3} colSpan={2} textAlign="center">
@@ -51,7 +67,7 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
         </HStack>
       </GridItem>
       <GridItem rowSpan={1} colSpan={2}>
-        <Button w="90%" mt={2} pb={1} color="gray.600">
+        <Button w="90%" mt={2} pb={1} color="gray.600" onClick={()=>{handleOnClick()}}>
           登録
         </Button>
       </GridItem>

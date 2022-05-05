@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react'
 import { GraphQLClient, request, gql } from "graphql-request";
 import { BASE_URL } from "../../../config/constants";
 import { animationControls } from 'framer-motion';
-import { useQuery } from "react-query"
+import { useQuery, useQueryClient } from "react-query"
 // import type { QueryObserverIdleResul } from "react-query"
 
 // interface Shiwakes {
