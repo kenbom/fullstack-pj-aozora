@@ -16,14 +16,16 @@ async function setSeisanHyou(input: ShiwakeInput) {
   const mutation = gql`{
     mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
     shiwakeCreate(input: $input) {
+    #  ...input ,
     userErrors {
       message
     }
   }
 }
+  }                          
   `;
-  const data = await client.request(mutation, input);
-  return data;
+  const data = await client.request(mutation,input);
+  
 }
 export function useShiwakeTouroku(): UseMutateFunction<
   void,

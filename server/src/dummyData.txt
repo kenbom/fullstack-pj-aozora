@@ -122,7 +122,8 @@ mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
     userErrors {
       message
     }
-    }}
+    }
+    }
 
 ////////////////////////////////////上のクエリで使ったinput
 { "input":{

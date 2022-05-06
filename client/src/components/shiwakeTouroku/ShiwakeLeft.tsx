@@ -22,22 +22,17 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
     setKingaku(e.target.value);
   };
   const { tekiyou } = props;
-  const shiwakeInput = {
-    hasseiDate: "2021-01-01T13:50:40+09:00",
-    tekiyou: tekiyou,
-    kariCd: atomShiwakeData.kariKamokuCd,
-    kariName: atomShiwakeData.kariKamokuMei,
-    kariKingaku: Number(kingaku),
-    kashiCd: atomShiwakeData.kashiKamokuCd,
-    kashiName: atomShiwakeData.kashiKamokuMei,
-    kashiKingaku: Number(kingaku),
-    // console.log(date);
-    // console.log(tekiyou);
-    // function handleOnClick():any {
-    //   console.log("hello")
-
-    //   }
-  };
+  const shiwakeInput = { "input":{
+    "hasseiDate": "2021-01-01T13:50:40+09:00",
+    "tekiyou": tekiyou,
+    "kariCd": atomShiwakeData.kariKamokuCd,
+    "kariName": atomShiwakeData.kariKamokuMei,
+    "kariKingaku": Number(kingaku),
+    "kashiCd": atomShiwakeData.kashiKamokuCd,
+    "kashiName": atomShiwakeData.kashiKamokuMei,
+    "kashiKingaku": Number(kingaku),
+  }
+}
   const mutateShiwake = useShiwakeTouroku();
   return (
     <>
@@ -83,4 +78,4 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
       </GridItem>
     </>
   );
-};
+        }
