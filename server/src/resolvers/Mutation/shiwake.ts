@@ -4,22 +4,15 @@ import { Context } from "../../index"
 
 interface ShiwakeCreateArgs {
     input: {
-        torihikiPtnCd: number
-        torihikiName: string
+        hasseiDate: string
+        tekiyou: string
         kariCd: number
         kariName: string
         kariKingaku: number
-        kariGrpCd: number
-        kariGrpName: string
-        kariKubun: boolean
         kashiCd: number
         kashiName: string
         kashiKingaku: number
-        kashiGrpCd: number
-        kashiGrpName: string
-        kashiKubun: boolean
-        tekiyou: string
-        hasseiDate: string
+    
     }
 }
 
@@ -31,7 +24,7 @@ interface ShiwakePayloadType {
 }
 
 export const shiwakeRosolvers = {
-    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma, userInfo }: Context): Promise<ShiwakePayloadType> => {
+    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma }: Context): Promise<ShiwakePayloadType> => {
         
         // if (!userName || !mail)
         //     return {
@@ -46,14 +39,14 @@ export const shiwakeRosolvers = {
         //         shiwake: null
         //     }
         // }
-        console.log("kiteruka?")
+       
         const shiwake = await prisma.shiwake.create({
             data: {
                 ...input,
                 //下１行をコメントアウト 　5/5 16:31
                 // userId:userInfo.userId,
                 //下の１行を加えた
-                userId:1
+                userId:1,
             }
         })
         return {

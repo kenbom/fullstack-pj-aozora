@@ -30,7 +30,7 @@ export const authResolvers = {
     signup: async (
         parent: any,
         { credentials, userName }: SignupArgs,
-        { prisma, userInfo }: Context
+        { prisma }: Context
     ): Promise<UserPayload> => {
         const { mail, password } = credentials
 
@@ -80,7 +80,7 @@ export const authResolvers = {
 
     signin: async (_: any,
         { credentials }: SigninArgs,
-        { prisma, userInfo }: Context
+        { prisma }: Context
     ): Promise<UserPayload> => {
         const { mail, password } = credentials
 

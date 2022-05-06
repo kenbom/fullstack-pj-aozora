@@ -4,14 +4,14 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker, { CalendarContainer } from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker, { CalendarContainer } from "react-datepicker";
 import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
 import type { ShiwakeInput } from "./ShiwakeTouroku";
 import { ShiwakeRight } from "./ShiwakeRight";
 
 type ShiwakePropsType = {
-  date: Date;
+  
   tekiyou?: string;
 };
 
@@ -21,16 +21,16 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
   const changeKingaku = (e: any) => {
     setKingaku(e.target.value);
   };
-  const { date, tekiyou } = props;
+  const { tekiyou } = props;
   const shiwakeInput = {
-    hasseiDate: date,
+    hasseiDate: "2021-01-01T13:50:40+09:00",
     tekiyou: tekiyou,
     kariCd: atomShiwakeData.kariKamokuCd,
     kariName: atomShiwakeData.kariKamokuMei,
-    kariKingaku: kingaku,
+    kariKingaku: Number(kingaku),
     kashiCd: atomShiwakeData.kashiKamokuCd,
     kashiName: atomShiwakeData.kashiKamokuMei,
-    kashiKingaku: kingaku,
+    kashiKingaku: Number(kingaku),
     // console.log(date);
     // console.log(tekiyou);
     // function handleOnClick():any {
@@ -38,7 +38,7 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
 
     //   }
   };
-  const mutateShiwake = useShiwakeTouroku(shiwakeInput);
+  const mutateShiwake = useShiwakeTouroku();
   return (
     <>
       <GridItem rowSpan={3} colSpan={2} textAlign="center">

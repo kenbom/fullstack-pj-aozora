@@ -35,22 +35,14 @@ export const typeDefs = gql`
   }
 
   input ShiwakeCreateArgs {
-    torihikiPtnCd: Int
-    torihikiName: String
+    hasseiDate: String
+    tekiyou: String
     kariCd: Int
     kariName: String
     kariKingaku: Int
-    kariGrpCd: Int
-    kariGrpName: String
-    kariKubun: Boolean
     kashiCd: Int
     kashiName: String
     kashiKingaku: Int
-    kashiGrpCd: Int
-    kashiGrpName: String
-    kashiKubun: Boolean
-    tekiyou: String
-    hasseiDate: String
   }
 
   type User {

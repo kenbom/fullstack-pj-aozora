@@ -14,7 +14,7 @@ import { ShiwakeBoth } from "./ShiwakeBoth";
 import { graphqlSync } from "graphql";
 
 export type ShiwakeInput = {
-  hasseiDate: Date;
+  hasseiDate: string 
   tekiyou: string | undefined;
   kariCd: number;
   kariName: string;
@@ -116,7 +116,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
-              <ShiwakeLeft date={date} tekiyou={tekiyou} />
+              <ShiwakeLeft  tekiyou={tekiyou} />
             ) : atomShiwakeData.hyoujiPtn === "R" ? (
               <ShiwakeRight date={date} tekiyou={tekiyou} />
             ) : (

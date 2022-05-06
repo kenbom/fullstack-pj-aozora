@@ -9,7 +9,7 @@ export const Query = {
 
     hello: (parent: any, args: any, context: any) => "World!",
 
-    kamokus: async (_: any, __: any, { prisma, userInfo }: Context) => {
+    kamokus: async (_: any, __: any, { prisma }: Context) => {
         const kamokus = await prisma.kamoku.findMany()
 
         return kamokus

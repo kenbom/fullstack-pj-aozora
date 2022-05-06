@@ -9,7 +9,6 @@ import { strdMenuItem } from "../../../store/strdStates";
 import type { ShiwakeInput } from "../ShiwakeTouroku";
 import type { Shiwakes } from "../../seisanHyou/hooks/useSeisanHyou";
 
-const queryKey = "shiwakeInputKey";
 
 async function setSeisanHyou(input: ShiwakeInput) {
   console.log(input)
@@ -23,16 +22,13 @@ async function setSeisanHyou(input: ShiwakeInput) {
     }
   }
 }
-
-  }
   `;
-  const data = await client.request(mutation);
+  const data = await client.request(mutation, input);
+  return data
 }
-export function useShiwakeTouroku(
-  shiwakeInput: ShiwakeInput
-): UseMutateFunction<void, unknown, ShiwakeInput, unknown> {
-  const newshiwakeInput = shiwakeInput
-  const {mutate} = useMutation((newshiwakeInput: ShiwakeInput) =>
+export function useShiwakeTouroku(): UseMutateFunction<void, unknown, ShiwakeInput, unknown> {
+
+  const  mutate  = useMutation((newshiwakeInput: ShiwakeInput) =>
     setSeisanHyou(newshiwakeInput)
   );
   return mutate;
