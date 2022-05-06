@@ -32,7 +32,7 @@ async function getSeisanHyou(): Promise<Shiwakes> {
   const query = gql`
      {
        shiwakes {
-         id
+         id 
          hasseiDate
          createdAt
          kariName

@@ -43,6 +43,7 @@ export const typeDefs = gql`
     kashiCd: Int
     kashiName: String
     kashiKingaku: Int
+    userId:Int
   }
 
   type User {
@@ -59,25 +60,17 @@ export const typeDefs = gql`
   }
 
   type Shiwake {
-    id: ID!
-    torihikiPtnCd: Int
-    torihikiName: String
+    id:Int
+    hasseiDate: String
+    tekiyou: String
     kariCd: Int!
     kariName: String!
-    kariKingaku: Int!
-    kariGrpCd: Int
-    kariGrpName: String
-    kariKubun: Boolean
+    kariKingaku: Int
     kashiCd: Int!
     kashiName: String!
-    kashiKingaku: Int!
-    kashiGrpCd: Int
-    kashiGrpName: String
-    kashiKubun: Boolean
-    tekiyou: String
-    hasseiDate: String!
+    kashiKingaku: Int
     userId: Int!
-    createdAt: String
+    createdAt:String
   }
 
   input CredentialsInput {

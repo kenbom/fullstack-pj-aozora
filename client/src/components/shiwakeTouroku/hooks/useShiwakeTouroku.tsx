@@ -9,9 +9,8 @@ import { strdMenuItem } from "../../../store/strdStates";
 import type { ShiwakeInput } from "../ShiwakeTouroku";
 import type { Shiwakes } from "../../seisanHyou/hooks/useSeisanHyou";
 
-
 async function setSeisanHyou(input: ShiwakeInput) {
-  console.log(input)
+  console.log(input);
   const endpoint = BASE_URL;
   const client = new GraphQLClient(endpoint);
   const mutation = gql`{
@@ -24,11 +23,15 @@ async function setSeisanHyou(input: ShiwakeInput) {
 }
   `;
   const data = await client.request(mutation, input);
-  return data
+  return data;
 }
-export function useShiwakeTouroku(): UseMutateFunction<void, unknown, ShiwakeInput, unknown> {
-
-  const  mutate  = useMutation((newshiwakeInput: ShiwakeInput) =>
+export function useShiwakeTouroku(): UseMutateFunction<
+  void,
+  unknown,
+  ShiwakeInput,
+  unknown
+> {
+  const { mutate } = useMutation((newshiwakeInput: ShiwakeInput) =>
     setSeisanHyou(newshiwakeInput)
   );
   return mutate;

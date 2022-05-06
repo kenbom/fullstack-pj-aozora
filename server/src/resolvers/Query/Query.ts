@@ -16,8 +16,8 @@ export const Query = {
     },
 
     shiwakes: async (_: any, __: any, { prisma }: Context) => {
-        const kamokus = await prisma.shiwake.findMany()
+        const shiwakesMade = await prisma.shiwake.findMany()
 
-        return kamokus
+        return shiwakesMade
     }
 }

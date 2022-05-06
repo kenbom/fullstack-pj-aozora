@@ -65,13 +65,13 @@ model Shiwake {
   torihikiName  String?
   kariCd        Int
   kariName      String
-  kariKingaku   Int
+  kariKingaku   Int?
   kariGrpCd     Int?
   kariGrpName   String?
   kariKubun     Boolean?
   kashiCd       Int
   kashiName     String
-  kashiKingaku  Int
+  kashiKingaku  Int?
   kashiGrpCd    Int?
   kashiGrpName  String?
   kashiKubun    Boolean?

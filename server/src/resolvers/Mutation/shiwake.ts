@@ -12,7 +12,7 @@ interface ShiwakeCreateArgs {
         kashiCd: number
         kashiName: string
         kashiKingaku: number
-    
+        
     }
 }
 
@@ -40,7 +40,7 @@ export const shiwakeRosolvers = {
         //     }
         // }
        
-        const shiwake = await prisma.shiwake.create({
+        const shiwakeDone = await prisma.shiwake.create({
             data: {
                 ...input,
                 //下１行をコメントアウト 　5/5 16:31
@@ -51,7 +51,7 @@ export const shiwakeRosolvers = {
         })
         return {
             userErrors: [],
-            shiwake: shiwake
+            shiwake: shiwakeDone
 
         }
     }
