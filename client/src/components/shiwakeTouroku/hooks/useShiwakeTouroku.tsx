@@ -13,19 +13,19 @@ async function setSeisanHyou(input: ShiwakeInput) {
   console.log(input);
   const endpoint = BASE_URL;
   const client = new GraphQLClient(endpoint);
-  const mutation = gql`{
+  const mutation = gql`
     mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
     shiwakeCreate(input: $input) {
-    #  ...input ,
+    
     userErrors {
       message
+      }
     }
-  }
-}
   }                          
   `;
-  const data = await client.request(mutation,input);
-  
+  const data = await client.request(mutation, input);
+
+
 }
 export function useShiwakeTouroku(): UseMutateFunction<
   void,
