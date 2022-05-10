@@ -63,6 +63,6 @@ export const shiwakeRosolvers = {
             // })
             shiwake: shiwakeDone
 
-        }dd
+        }
     }
 }
