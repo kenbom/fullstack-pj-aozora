@@ -4,14 +4,14 @@ import { Query, Mutation } from "./resolvers"
 import { PrismaClient, Prisma } from "@prisma/client"
 import { getUserFromToken } from "./utils/getUserFromToken"
 
-const prisma = new PrismaClient()
+export const prisma = new PrismaClient()
 export interface Context {
     prisma: PrismaClient<
         Prisma.PrismaClientOptions,
         never, Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
     >;
     userInfo: {
-        userId: number
+        userId:number
     } | null;
 }
 
@@ -22,11 +22,12 @@ const server = new ApolloServer({
         Mutation,
     },
     context: async ({ req }: any): Promise<Context> => {
-        // console.log(req.headers.authorization)
-        const userInfo = await getUserFromToken(req.headers.authorization)
+        console.log(`atIndex:${req.headers.authorization}`)
+        const userInfo = await getUserFromToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM")
+        console.log(`afterGetUserFT:${userInfo}`)
         return {
             prisma,
-            userInfo,
+            userInfo ,
         }
     },
 })
