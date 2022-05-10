@@ -4,14 +4,11 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-// import "react-datepicker/dist/react-datepicker.css";
-// import DatePicker, { CalendarContainer } from "react-datepicker";
 import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
-import type { ShiwakeInput } from "./ShiwakeTouroku";
-import { ShiwakeRight } from "./ShiwakeRight";
+
 
 type ShiwakePropsType = {
-  
+  date:Date, 
   tekiyou?: string;
 };
 
@@ -21,9 +18,9 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
   const changeKingaku = (e: any) => {
     setKingaku(e.target.value);
   };
-  const { tekiyou } = props;
+  const { date, tekiyou } = props;
   const shiwakeInput = { "input":{
-    "hasseiDate": "2021-01-01T13:50:40+09:00",
+    "hasseiDate": date.toISOString(),
     "tekiyou": tekiyou,
     "kariCd": atomShiwakeData.kariKamokuCd,
     "kariName": atomShiwakeData.kariKamokuMei,

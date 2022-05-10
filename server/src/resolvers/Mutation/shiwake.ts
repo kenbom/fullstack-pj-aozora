@@ -24,7 +24,7 @@ interface ShiwakePayloadType {
 }
 
 export const shiwakeRosolvers = {
-    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma }: Context): Promise<ShiwakePayloadType> => {
+    shiwakeCreate: async (parent: any, { input }: ShiwakeCreateArgs, { prisma, userInfo }: Context): Promise<ShiwakePayloadType> => {
         
         // if (!userName || !mail)
         //     return {
@@ -33,20 +33,20 @@ export const shiwakeRosolvers = {
         //     }
         // console.log({userInfo})
         //ここから下６行をコメントアウト　5/5 16:31
-        // if (!userInfo) {
-        //     return {
-        //         userErrors: [{ message: "Not authenticated." }],
-        //         shiwake: null
-        //     }
-        // }
+        if (!userInfo) {
+            return {
+                userErrors: [{ message: "Not authenticated." }],
+                shiwake: null
+            }
+        }
        
         const shiwakeDone = await prisma.shiwake.create({
             data: {
                 ...input,
                 //下１行をコメントアウト 　5/5 16:31
-                // userId:userInfo.userId,
+                userId:userInfo.userId,
                 //下の１行を加えた
-                userId:1,
+                // userId:1,
             }
         })
         return {

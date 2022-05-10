@@ -4,8 +4,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker, { CalendarContainer } from "react-datepicker";
+import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
 
 type ShiwakePropsType = {
   date: Date;
@@ -19,6 +18,19 @@ export const ShiwakeRight = (props: ShiwakePropsType) => {
     setKingaku(e.target.value);
   };
   const { date, tekiyou } = props;
+  const shiwakeInput = {
+    "input": {
+      "hasseiDate": date.toISOString(),
+      "tekiyou": tekiyou,
+      "kariCd": atomShiwakeData.kariKamokuCd,
+      "kariName": atomShiwakeData.kariKamokuMei,
+      "kariKingaku": Number(kingaku),
+      "kashiCd": atomShiwakeData.kashiKamokuCd,
+      "kashiName": atomShiwakeData.kashiKamokuMei,
+      "kashiKingaku": Number(kingaku),
+    }
+  }
+  const mutateShiwake = useShiwakeTouroku();
   return (
     <>
       <GridItem rowSpan={3} colSpan={2} textAlign="center">
@@ -49,10 +61,18 @@ export const ShiwakeRight = (props: ShiwakePropsType) => {
         </HStack>
       </GridItem>
       <GridItem rowSpan={1} colSpan={2}>
-        <Button w="90%" mt={2} pb={1} color="gray.700">
+        <Button 
+        w="90%" 
+        mt={2} 
+        pb={1} 
+        color="gray.600" 
+        onClick={() => {
+          mutateShiwake(shiwakeInput);
+        }}>
           登録
         </Button>
       </GridItem>
+
     </>
   );
 };

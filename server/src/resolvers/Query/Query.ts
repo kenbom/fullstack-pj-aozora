@@ -16,7 +16,11 @@ export const Query = {
     },
 
     shiwakes: async (_: any, __: any, { prisma }: Context) => {
-        const shiwakesMade = await prisma.shiwake.findMany()
+        const shiwakesMade = await prisma.shiwake.findMany({
+            orderBy: {
+               hasseiDate: 'desc'
+            }
+        })
 
         return shiwakesMade
     }

@@ -25,6 +25,7 @@ export type ShiwakeInput = {
 };
 
 type shiwakeTourokuProps = {
+  date: Date,
   name: string;
 };
 
@@ -116,7 +117,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
-              <ShiwakeLeft  tekiyou={tekiyou} />
+              <ShiwakeLeft  date = {date} tekiyou={tekiyou} />
             ) : atomShiwakeData.hyoujiPtn === "R" ? (
               <ShiwakeRight date={date} tekiyou={tekiyou} />
             ) : (

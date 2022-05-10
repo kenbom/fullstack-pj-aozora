@@ -136,3 +136,6 @@ mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
     "tekiyou":      "テスト", 
     "hasseiDate":   "2022-01-01T13:50:40+09:00", 
 }}
+
+/////////////////////////////////////5/10 今日得たtoken
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTIxNDY2MTYsImV4cCI6MTY1NTc0NjYxNn0.4riQejKsk89u75WvoQj3fn4c1-bFtIClL2YZ8FRpeb
