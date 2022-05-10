@@ -22,7 +22,9 @@ const server = new ApolloServer({
         Mutation,
     },
     context: async ({ req }: any): Promise<Context> => {
-        console.log(`atIndex:${req.headers.authorization}`)
+        // console.log(`atIndexReq:${JSON.stringify(req)}`)
+        console.log(`atIndexReqHeader:${JSON.stringify(req.headers)}`)
+        console.log(`atIndexAuth:${req.headers.authorization}`)
         const userInfo = await getUserFromToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM")
         console.log(`afterGetUserFT:${userInfo}`)
         return {
