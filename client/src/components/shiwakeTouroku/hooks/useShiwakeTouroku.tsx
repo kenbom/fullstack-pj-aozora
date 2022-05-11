@@ -32,6 +32,7 @@ async function setSeisanHyou(input: ShiwakeInput) {
     authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM"
   }
   const data = await client.request(mutation, input, requestHeaders);
+  console.log(`returnedData:${data}`)
 
 
 }
