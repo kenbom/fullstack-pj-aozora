@@ -1,4 +1,4 @@
 export const queryKeys = {
-    useSeisanHyou:"useSeisanHyou",
-    useShiwakeTouroku:'useShiwakeTouroku'
+    useSeisanHyou:"useSeisanHyouQuery",
+    useShiwakeTouroku:'useShiwakeTourokuQuery'
 }
