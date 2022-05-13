@@ -3,7 +3,8 @@ import { Box } from '@chakra-ui/react'
 import { GraphQLClient, request, gql } from "graphql-request";
 import { BASE_URL } from "../../../config/constants";
 import { animationControls } from 'framer-motion';
-import { useQuery, useQueryClient } from "react-query"
+import { UseMutateFunction, useQuery, useQueryClient } from "react-query"
+import { queryKeys } from "../../../config/queryKeys"
 // import type { QueryObserverIdleResul } from "react-query"
 
 // interface Shiwakes {
@@ -24,7 +25,7 @@ export type Shiwake = {
   tekiyou: string
 }
 
-const queryKey = 'shiwakes'
+const queryKey = queryKeys.useSeisanHyou
 
 async function getSeisanHyou(): Promise<Shiwakes> {
   const endpoint = BASE_URL

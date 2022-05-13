@@ -5,9 +5,11 @@ import { BASE_URL } from "../../../config/constants";
 import { atom, useRecoilState } from "recoil";
 import type { StrdMenuItem } from "../../../store/strdStates";
 import { strdMenuItem } from "../../../store/strdStates";
+import { useCustomToast } from '../../app/hooks/useCustomToast';
 // import {useCustomToast} from ""
 import type { ShiwakeInput } from "../ShiwakeTouroku";
 import type { Shiwakes } from "../../seisanHyou/hooks/useSeisanHyou";
+import { queryKeys } from "../../../config/queryKeys"
 
 async function setSeisanHyou(input: ShiwakeInput) {
   console.log(input);
@@ -15,7 +17,8 @@ async function setSeisanHyou(input: ShiwakeInput) {
   const client = new GraphQLClient(endpoint, {
     headers: {
       authorization:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM",
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc"
     },
   });
   const mutation = gql`
@@ -29,7 +32,9 @@ async function setSeisanHyou(input: ShiwakeInput) {
   }                          
   `;
   const requestHeaders = {
-    authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM"
+    authorization:
+    // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc"
   }
   const data = await client.request(mutation, input, requestHeaders);
   console.log(`returnedData:${data}`)
@@ -42,8 +47,19 @@ export function useShiwakeTouroku(): UseMutateFunction<
   ShiwakeInput,
   unknown
 > {
+  const toast = useCustomToast();
+  const queryClient = useQueryClient();
   const { mutate } = useMutation((newshiwakeInput: ShiwakeInput) =>
-    setSeisanHyou(newshiwakeInput)
+    setSeisanHyou(newshiwakeInput),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries([queryKeys.useShiwakeTouroku]);
+        toast({
+          title: '登録完了しました。',
+          status: 'success',
+        });
+      },
+    }
   );
   return mutate;
 }
