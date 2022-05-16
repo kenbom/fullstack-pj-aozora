@@ -1,4 +1,4 @@
-import React, {VFC} from 'react'
+import React, { VFC } from 'react'
 import {
   FormControl,
   FormLabel,
@@ -10,63 +10,67 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Formik, Form, Field, } from 'formik';
+import * as Yup from 'yup';
+import {
+  InputControl,
+  PercentComplete,
+  ResetButton,
+  SubmitButton,
+  CheckboxSingleControl
+} from "formik-chakra-ui"
+import { GraphQLEnumType } from 'graphql';
 
-export const Signin:VFC = () => {
-    function validateName(value:string | undefined) {
-      let error;
-      if (!value) {
-        error = "Name is required";
-      } else if (value.toLowerCase() !== "naruto") {
-        error = "Jeez! You're not a fan 😱";
-      }
-      return error;
-    }
+const SignupSchema = Yup.object().shape({
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  // lastName: Yup.string()
+  //   .min(2, 'Too Short!')
+  //   .max(50, 'Too Long!')
+  //   .required('Required'),
+  email: Yup.string().email('正しいメールアドレスを入力してください').required('メールアドレスは必須です'),
+});
 
+export const Signin: VFC = () => {
   return (
     <Box >
       <Center>
         <Box w="300px" p="20px" border="1px" bgColor="white" mt='50px'>
-          <Formik
-            initialValues={{ name: "Sasuke" }}
-            onSubmit={(values, actions) => {
+          <Formik initialValues={{
+            email: '',
+            password: '',
+          }}
+            validationSchema={SignupSchema}
+            onSubmit={values => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-              }, 1000);
+                alert(JSON.stringify(values, null , `  `))
+              }, 1000)
             }}
           >
-            {(props) => (
+            {({ errors, touched }) => (
               <Form>
-                <Field name="name" validate={validateName}>
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={form.errors.name && form.touched.name}
-                    >
-                      <FormLabel htmlFor="name">メール</FormLabel>
-                      <Input {...field} id="name" placeholder="name" />
-                      <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-                <Field name="name" validate={validateName}>
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={form.errors.name && form.touched.name}
-                    >
-                      <FormLabel htmlFor="name">パスワード</FormLabel>
-                      <Input {...field} id="name" placeholder="name" />
-                      <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-                <Button
-                  mt={4}
-                  colorScheme="teal"
-                  isLoading={props.isSubmitting}
-                  type="submit"
-                >
-                  Login
-                </Button>
+                {/* <Field name="firstName" />
+                {({ field, form }) => (
+              <FormControl isInvalid={form.errors.name && form.touched.name}>
+                <FormLabel htmlFor='firstName'>First name</FormLabel> */}
+                <InputControl name='email' label='メールアドレス' />
+                {/* <FormErrorMessage>{form.errors.firstName}</FormErrorMessage> */}
+              {/* </FormControl> */}
+            {/* )} */}
+                {/* {errors.firstName && touched.firstName ? (
+                  <div>{errors.firstName}</div>
+                ) : null} */}
+                {/* <Field name="lastName" />
+                {errors.lastName && touched.lastName ? (
+                  <div>{errors.lastName}</div>
+                ) : null}
+                <Field name="email" type="email" />
+                {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
+                <InputControl name='password' label='パスワード' />
+                <SubmitButton mt={4} color="gray.800" bgColor="gray.200"
+                  // colorScheme='blue'
+                  type='submit'>Signin</SubmitButton>
               </Form>
             )}
           </Formik>
