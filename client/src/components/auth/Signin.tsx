@@ -69,7 +69,7 @@ export const Signin: VFC = () => {
                 {({ field, form }) => (
               <FormControl isInvalid={form.errors.name && form.touched.name}>
                 <FormLabel htmlFor='firstName'>First name</FormLabel> */}
-                  <InputControl name="email" label="メールアドレス" mb={10} />
+                  <InputControl name="email" label="メールアドレス" mb={7} />
                   {/* <FormErrorMessage>{form.errors.firstName}</FormErrorMessage> */}
                   {/* </FormControl> */}
                   {/* )} */}
