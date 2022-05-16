@@ -23,9 +23,9 @@ export const Signin:VFC = () => {
     }
 
   return (
-    <Box h="100%" backgroundColor="blue.100">
+    <Box >
       <Center>
-        <Box w="300px" p="20px" border="1px">
+        <Box w="300px" p="20px" border="1px" bgColor="white" mt='50px'>
           <Formik
             initialValues={{ name: "Sasuke" }}
             onSubmit={(values, actions) => {
@@ -42,7 +42,18 @@ export const Signin:VFC = () => {
                     <FormControl
                       isInvalid={form.errors.name && form.touched.name}
                     >
-                      <FormLabel htmlFor="name">First name</FormLabel>
+                      <FormLabel htmlFor="name">メール</FormLabel>
+                      <Input {...field} id="name" placeholder="name" />
+                      <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="name" validate={validateName}>
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.name && form.touched.name}
+                    >
+                      <FormLabel htmlFor="name">パスワード</FormLabel>
                       <Input {...field} id="name" placeholder="name" />
                       <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                     </FormControl>
@@ -54,7 +65,7 @@ export const Signin:VFC = () => {
                   isLoading={props.isSubmitting}
                   type="submit"
                 >
-                  Submit
+                  Login
                 </Button>
               </Form>
             )}
