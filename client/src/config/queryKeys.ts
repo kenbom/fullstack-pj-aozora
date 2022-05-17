@@ -1,4 +1,7 @@
+import { useSigninAuth } from "../components/auth/hooks/useSigninAuth";
+
 export const queryKeys = {
     useSeisanHyou:"useSeisanHyouQuery",
-    useShiwakeTouroku:'useShiwakeTourokuQuery'
+    useShiwakeTouroku:'useShiwakeTourokuQuery',
+    useSigninAuth:'useSigninAuth',
 }

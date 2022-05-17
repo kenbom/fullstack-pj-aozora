@@ -16,11 +16,11 @@ async function setSeisanHyou(input: ShiwakeInput) {
   console.log(input);
   const endpoint = BASE_URL;
   // localStorage.saveKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc";
-  localStorage.saveKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM";
+  localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM");
 
-  const auth = localStorage.saveKey
+  const auth = localStorage.getItem("token")
   const client = new GraphQLClient(endpoint, {
-    headers: {
+    headers:{
       authorization: auth
         // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM",
         // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc"
@@ -43,28 +43,27 @@ async function setSeisanHyou(input: ShiwakeInput) {
   }
   const data = await client.request(mutation, input, requestHeaders);
   console.log(`returnedData:${JSON.stringify(data)}`)
-
-
 }
+
 export function useShiwakeTouroku(): UseMutateFunction<
   void,
   unknown,
   ShiwakeInput,
   unknown
 > {
-  const toast = useCustomToast();
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation((newshiwakeInput: ShiwakeInput) =>
-    setSeisanHyou(newshiwakeInput),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries([queryKeys.useShiwakeTouroku]);
-        toast({
-          title: '登録完了しました。',
-          status: 'success',
-        });
-      },
-    }
-  );
-  return mutate;
+    const toast = useCustomToast();
+    const queryClient = useQueryClient();
+    const { mutate } = useMutation((newshiwakeInput: ShiwakeInput) =>
+      setSeisanHyou(newshiwakeInput),
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries([queryKeys.useShiwakeTouroku]);
+          toast({
+            title: '登録完了しました。',
+            status: 'success',
+          });
+        },
+      }
+    );
+    return mutate;
 }
