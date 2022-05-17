@@ -42,7 +42,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const Signin: VFC = () => {
-  const mutateSignin = useSigninAuth()
+  const mutateSignin = useSigninAuth();
   return (
     <>
       <Box>
@@ -56,9 +56,16 @@ export const Signin: VFC = () => {
               }}
               validationSchema={SignupSchema}
               onSubmit={(values) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, `  `));
-                }, 1000);
+                const signinArgs = {
+                  credentials: {
+                    mail: values.email,
+                    password: values.password,
+                  },
+                };
+                mutateSignin(signinArgs);
+                // setTimeout(() => {
+                //   alert(JSON.stringify(values, null, `  `));
+                // }, 1000);
               }}
               onReset={(values) => {
                 values.email = "";

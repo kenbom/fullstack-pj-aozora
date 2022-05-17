@@ -12,11 +12,11 @@ import type { Shiwakes } from "../../seisanHyou/hooks/useSeisanHyou";
 import { queryKeys } from "../../../config/queryKeys" 
 
 async function setSeisanHyou(input: ShiwakeInput) {
-  localStorage.clear()
-  console.log(input);
+  // localStorage.clear()
+  // console.log(input);
   const endpoint = BASE_URL;
-  // localStorage.saveKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc";
-  localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM");
+  // // localStorage.saveKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc";
+  // localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM");
 
   const auth = localStorage.getItem("token")
   const client = new GraphQLClient(endpoint, {
@@ -53,6 +53,7 @@ export function useShiwakeTouroku(): UseMutateFunction<
 > {
     const toast = useCustomToast();
     const queryClient = useQueryClient();
+
     const { mutate } = useMutation((newshiwakeInput: ShiwakeInput) =>
       setSeisanHyou(newshiwakeInput),
       {

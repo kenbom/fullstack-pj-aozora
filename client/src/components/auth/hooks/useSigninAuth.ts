@@ -4,6 +4,9 @@ import { GraphQLClient, request, gql } from "graphql-request";
 import { BASE_URL } from "../../../config/constants";
 import { useCustomToast } from '../../app/hooks/useCustomToast';
 import { queryKeys } from "../../../config/queryKeys"
+import { redirect } from 'next/dist/server/api-utils';
+import Router from 'next/router';
+import { NextPage } from 'next'
 
 type SigninArgs = {
     credentials: {
@@ -13,7 +16,7 @@ type SigninArgs = {
 }
 
 async function setSignin(credentials: SigninArgs) {
-    localStorage.clear()
+    // localStorage.clear()
     const endpoint = BASE_URL
     const client = new GraphQLClient(endpoint)
 
@@ -25,7 +28,18 @@ async function setSignin(credentials: SigninArgs) {
         }
     `
     const serverToken = await client.request(mutation, credentials)
-    console.log(serverToken)
+    console.log(`afterSin:${JSON.stringify(serverToken)}`)
+    // console.log(serverToken)
+    if (serverToken) {
+        localStorage.clear
+        const lclStrg = JSON.stringify(serverToken)
+        localStorage.setItem("token", lclStrg)
+        }
+    const toShowLclStrg = localStorage.getItem("token")
+    console.log(`lclStrg:${toShowLclStrg}`)
+    if (serverToken) Router.push('/')
+    
+
 }
 
 export function useSigninAuth(): UseMutateFunction<
@@ -40,15 +54,23 @@ export function useSigninAuth(): UseMutateFunction<
     const { mutate } = useMutation((newSigninArgs: SigninArgs) =>
         setSignin(newSigninArgs),
         {
-            onSucess: () => {
+            // onSucess: () => {
+            //     queryClient.invalidateQueries([queryKeys.useSigninAuth]);
+            //     toast({
+            //         title: '登録完了しました。',
+            //         status: 'success',
+            //     });
+            // },
+            onSuccess: () => {
                 queryClient.invalidateQueries([queryKeys.useSigninAuth]);
                 toast({
-                    title: '登録完了しました。',
+                    title: 'トークン取得しました。',
                     status: 'success',
                 });
             },
         }
     );
-    return mutate;
+    return mutate
 }
+
 
