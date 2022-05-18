@@ -15,12 +15,22 @@ export const Query = {
         return kamokus
     },
 
-    shiwakes: async (_: any, __: any, { prisma }: Context) => {
+    shiwakes: async (_: any, __: any, { prisma, userInfo }: Context) => {
+        if (!userInfo) {
+            return {
+                userErrors: [{ message: "Not authenticated." }],
+                shiwake: null,
+            }
+        }
         const shiwakesMade = await prisma.shiwake.findMany({
+            where:{
+                userId:userInfo.userId
+            },
             orderBy: {
                hasseiDate: 'desc'
             }
-        })
+        }
+        )
 
         return shiwakesMade
     }

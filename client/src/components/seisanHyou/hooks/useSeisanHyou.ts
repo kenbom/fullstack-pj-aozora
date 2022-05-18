@@ -29,7 +29,13 @@ const queryKey = queryKeys.useSeisanHyou
 
 async function getSeisanHyou(): Promise<Shiwakes> {
   const endpoint = BASE_URL
-  const client = new GraphQLClient(endpoint)
+  const tokenObj = localStorage.getItem("token")
+  const auth = JSON.parse(tokenObj)
+  const client = new GraphQLClient(endpoint, {
+    headers:{
+      authorization: auth
+    }
+  })
   const query = gql`
      {
        shiwakes {
@@ -40,6 +46,7 @@ async function getSeisanHyou(): Promise<Shiwakes> {
          kashiName
          kariKingaku
          tekiyou
+         userId
        }
      }
      `

@@ -141,3 +141,22 @@ mutation ShiwakeCreate($input: ShiwakeCreateArgs) {
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NTIxNTQ0MzUsImV4cCI6MTY1NTc1NDQzNX0.nAkGAiHpP9ZH80zqeTHm-Kmpq9QGo2QH2aVo8iNy9uM"
 ////////////////////////////////////////5/13 9:09 クライアントアクセス成功 user:23
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI0MDAwNTYsImV4cCI6MTY1NjAwMDA1Nn0.2hY4gpW4C-4tZeXZBG7j1JEW67FOymHlL2NcoP2zKmc
+
+////////////////////////////////5/18　ユーザー新規登録クエリ
+mutation signup($input:CredentialsInput, $userName: String){
+  signup(credentials:$input, userName: $userName) {
+    userErrors {
+      message
+    } 
+ token
+  } 
+}
+///////////////////////////////上で使ったクエリの入力値
+{
+  "input":{
+    "mail":"nono@uso.com",
+    "password": "password"
+},
+"userName": "todo"
+
+}

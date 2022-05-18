@@ -32,7 +32,7 @@ async function setSignin(credentials: SigninArgs) {
     // console.log(serverToken)
     if (serverToken) {
         localStorage.clear
-        const lclStrg = JSON.stringify(serverToken)
+        const lclStrg = JSON.stringify(serverToken.signin.token)
         localStorage.setItem("token", lclStrg)
         }
     const toShowLclStrg = localStorage.getItem("token")
