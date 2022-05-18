@@ -5,6 +5,7 @@ import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
+import { useSeisanHyou} from "../seisanHyou/hooks/useSeisanHyou"
 
 
 type ShiwakePropsType = {

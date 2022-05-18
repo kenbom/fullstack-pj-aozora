@@ -51,6 +51,7 @@ export function useShiwakeTouroku(): UseMutateFunction<
       setSeisanHyou(newshiwakeInput),
       {
         onSuccess: () => {
+          queryClient.refetchQueries([queryKeys.useSeisanHyou])
           queryClient.invalidateQueries([queryKeys.useShiwakeTouroku]);
           toast({
             title: '登録完了しました。',

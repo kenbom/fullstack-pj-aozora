@@ -67,6 +67,7 @@ export function useSigninAuth(): UseMutateFunction<
                     title: 'トークン取得しました。',
                     status: 'success',
                 });
+                queryClient.refetchQueries([queryKeys.useSeisanHyou])
             },
         }
     );

@@ -25,9 +25,10 @@ export type Shiwake = {
   tekiyou: string
 }
 
-const queryKey = queryKeys.useSeisanHyou
+// const queryKey = queryKeys.useSeisanHyou
 
 async function getSeisanHyou(): Promise<Shiwakes> {
+  // const queryKey = queryKeys.useSeisanHyou
   const endpoint = BASE_URL
   const tokenObj = localStorage.getItem("token")
   const auth = JSON.parse(tokenObj)
@@ -56,6 +57,7 @@ async function getSeisanHyou(): Promise<Shiwakes> {
 }
 
 export function useSeisanHyou(): Shiwakes {
+  const queryKey = queryKeys.useSeisanHyou
   const fallback = []
   const { data = fallback } = useQuery(queryKey, getSeisanHyou)
   //console.log(data)
