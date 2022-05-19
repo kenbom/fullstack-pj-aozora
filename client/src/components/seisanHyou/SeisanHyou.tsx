@@ -36,6 +36,12 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
     return newNewStamp
   }
   const deleteShiwake = useShiwakeSakujo()
+  function shiwakeSet(shiwakeId:number){
+    const stringfiedId = String(63)
+    const objShiwakeId = {"shiwakeId":stringfiedId}
+    console.log(`checkIdOya:${JSON.stringify(objShiwakeId)}`)
+    deleteShiwake(objShiwakeId)
+  }
   return (
     <Box
       //m={4}
@@ -73,7 +79,7 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
                     {shiwakeItem.kariKingaku}
                   </Td>
                   <Td fontSize="xs">{shiwakeItem.tekiyou}</Td>
-                  <Td><Button onClick={() => deleteShiwake(51)} fontSize="xs">削除</Button></Td>
+                  <Td><Button onClick={() => shiwakeSet(shiwakeItem.id)} fontSize="xs">削除</Button></Td>
                 </Tr>
               );
             })}

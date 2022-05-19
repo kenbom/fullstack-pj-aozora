@@ -167,9 +167,12 @@ mutation shiwakeDelete($input:ID){
     userErrors {
       message
     } 
- 
   } 
 }
+///////////////////////////////
+{
+  "input":"29"
+} 
 
 /////////////////////////本日5・19のトークン
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI5MTkyNTIsImV4cCI6MTY1NjUxOTI1Mn0.WTzUeW0IvGYKc_nfhkADAe9yV_U7xwtUlRMCByZy2gg"

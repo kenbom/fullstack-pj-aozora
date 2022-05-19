@@ -13,10 +13,11 @@ import { queryKeys } from "../../../config/queryKeys";
 import { useSeisanHyou } from "./useSeisanHyou";
 
 type ShiwakeId = {
-    id: number,
+    shiwakeId: string,
 }
 
 async function setSeisanHyouSakujo(input: ShiwakeId) {
+    console.log(`checkIdUse:${JSON.stringify(input)}`)
     const endpoint = BASE_URL;
     const tokenObj = localStorage.getItem("token");
     const auth = JSON.parse(tokenObj);
@@ -26,8 +27,8 @@ async function setSeisanHyouSakujo(input: ShiwakeId) {
         },
     });
     const mutation = gql`
-    mutation shiwakeDelete($input: ID) {
-      shiwakeDelete(shiwakeId: $input) {
+    mutation shiwakeDelete($input: ShiwakeDeleteArgs) {
+      shiwakeDelete(input: $input) {
         userErrors {
           message
         }
@@ -52,6 +53,7 @@ export function useShiwakeSakujo(): UseMutateFunction<
 
     const { mutate } = useMutation(
         (shiwakeId: ShiwakeId) => setSeisanHyouSakujo(shiwakeId),
+        
         {
             onSuccess: () => {
                 queryClient.refetchQueries([queryKeys.useSeisanHyou]);

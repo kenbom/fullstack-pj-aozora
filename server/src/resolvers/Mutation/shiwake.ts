@@ -16,6 +16,12 @@ interface ShiwakeCreateArgs {
     }
 }
 
+interface ShiwakeDeleteArgs {
+    input: {
+        shiwakeId:string
+    }
+}
+
 interface ShiwakePayloadType {
     userErrors: {
         message: String
@@ -24,7 +30,7 @@ interface ShiwakePayloadType {
 }
 
 interface ShiwakeId {
-    shiwakeId: number
+    shiwakeId:string
 }
 
 export const shiwakeRosolvers = {
@@ -70,7 +76,7 @@ export const shiwakeRosolvers = {
         }
     },
 
-    shiwakeDelete: async (parent: any, { shiwakeId }: ShiwakeId, { prisma, userInfo }: Context): Promise<ShiwakePayloadType> => {
+    shiwakeDelete: async (parent: any, { input }: ShiwakeDeleteArgs, { prisma, userInfo }: Context): Promise<ShiwakePayloadType> => {
         // console.log(`atResolver:${userInfo?.userId}`) 
         // console.log(`inputAtResolver:${input.kariKingaku}`)
         // if (!userName || !mail)
@@ -86,10 +92,10 @@ export const shiwakeRosolvers = {
                 shiwake: null,
             }
         }
-
+        console.log(`idAtResolver:${JSON.stringify(input.shiwakeId)}`)
         const shiwakeDone = await prisma.shiwake.delete({
             where: {
-                id: Number(shiwakeId),
+                id: Number(input.shiwakeId),
             },
         }
         )
