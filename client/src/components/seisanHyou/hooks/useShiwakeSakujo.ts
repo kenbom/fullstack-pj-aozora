@@ -20,6 +20,7 @@ async function setSeisanHyouSakujo(input: ShiwakeId) {
     const endpoint = BASE_URL;
     const tokenObj = localStorage.getItem("token");
     const auth = JSON.parse(tokenObj);
+    const parsedInput = JSON.parse(input)
     const client = new GraphQLClient(endpoint, {
         headers: {
             authorization: auth,
@@ -37,7 +38,7 @@ async function setSeisanHyouSakujo(input: ShiwakeId) {
     const requestHeaders = {
         authorization: auth,
     };
-    const data = await client.request(mutation, input, requestHeaders);
+    const data = await client.request(mutation, parsedInput, requestHeaders);
     // console.log(`returnedData:${JSON.stringify(data)}`);
 }
 

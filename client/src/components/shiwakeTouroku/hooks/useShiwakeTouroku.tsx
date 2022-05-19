@@ -35,7 +35,7 @@ async function setSeisanHyou(input: ShiwakeInput) {
     authorization:auth
   }
   const data = await client.request(mutation, input, requestHeaders);
-  console.log(`returnedData:${JSON.stringify(data)}`)
+  // console.log(`returnedData:${JSON.stringify(data)}`)
 }
 
 export function useShiwakeTouroku(): UseMutateFunction<

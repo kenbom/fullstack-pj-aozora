@@ -86,8 +86,8 @@ export const shiwakeRosolvers = {
                 shiwake: null,
             }
         }
-
-        const shiwakeDone = await prisma.shiwake.delete({
+console.log(`shiwakeIdforDel:${shiwakeId}`)
+        const shiwakeDeleted = await prisma.shiwake.delete({
             where: {
                 id: Number(shiwakeId),
             },
@@ -104,7 +104,7 @@ export const shiwakeRosolvers = {
             //         userId:1,
             //     }
             // })
-            shiwake: shiwakeDone
+            shiwake: shiwakeDeleted
 
         }
     }

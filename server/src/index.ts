@@ -23,10 +23,10 @@ const server = new ApolloServer({
     },
     context: async ({ req }: any): Promise<Context> => {
         // console.log(`atIndexReq:${JSON.stringify(req)}`)
-        console.log(`atIndexReqHeader:${JSON.stringify(req.headers)}`)
-        console.log(`atIndexAuth:${req.headers.authorization}`)
+        // console.log(`atIndexReqHeader:${JSON.stringify(req.headers)}`)
+        // console.log(`atIndexAuth:${req.headers.authorization}`)
         const userInfo = await getUserFromToken(req.headers.authorization)
-        console.log(`afterGetUserFT:${userInfo}`)
+        // console.log(`afterGetUserFT:${userInfo}`)
         return {
             prisma,
             userInfo ,
