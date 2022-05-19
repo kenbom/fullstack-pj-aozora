@@ -46,7 +46,7 @@ export const shiwakeRosolvers = {
         //ここから下６行をコメントアウト　5/5 16:31
         if (!userInfo) {
             return {
-                userErrors: [{ message: "Not authenticated." }],
+                userErrors: [{ message: "承認されていないアクセスです。" }],
                 shiwake: null,
             }
         }
@@ -62,17 +62,7 @@ export const shiwakeRosolvers = {
         })
         return {
             userErrors: [],
-            // shiwake: prisma.shiwake.create({
-            //     data: {
-            //         ...input,
-            //         //下１行をコメントアウト 　5/5 16:31
-            //         // userId: userInfo?.userId
-            //         //下の１行を加えた
-            //         userId:1,
-            //     }
-            // })
             shiwake: shiwakeDone
-
         }
     },
 
@@ -88,7 +78,7 @@ export const shiwakeRosolvers = {
         //ここから下６行をコメントアウト　5/5 16:31
         if (!userInfo) {
             return {
-                userErrors: [{ message: "Not authenticated." }],
+                userErrors: [{ message: "承認されていないアクセスです。" }],
                 shiwake: null,
             }
         }
