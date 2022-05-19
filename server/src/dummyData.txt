@@ -160,3 +160,16 @@ mutation signup($input:CredentialsInput, $userName: String){
 "userName": "todo"
 
 }
+
+//////////////////////////5/19 ShiwakeDelete（たぶん）
+mutation shiwakeDelete($input:ID){
+  shiwakeDelete(shiwakeId:$input,)  {
+    userErrors {
+      message
+    } 
+ 
+  } 
+}
+
+/////////////////////////本日5・19のトークン
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE2NTI5MTkyNTIsImV4cCI6MTY1NjUxOTI1Mn0.WTzUeW0IvGYKc_nfhkADAe9yV_U7xwtUlRMCByZy2gg"

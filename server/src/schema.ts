@@ -12,6 +12,7 @@ export const typeDefs = gql`
     signup(credentials: CredentialsInput, userName: String ): AuthPayload
     signin(credentials: CredentialsInput): AuthPayload
     shiwakeCreate(input: ShiwakeCreateArgs): ShiwakePayload
+    shiwakeDelete(shiwakeId: ID): ShiwakePayload
   }
 
   type AuthPayload {
