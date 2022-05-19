@@ -21,7 +21,6 @@ async function setSeisanHyouSakujo(strInput: string) {
     const endpoint = BASE_URL;
     const tokenObj = localStorage.getItem("token");
     const auth = JSON.parse(tokenObj);
-git 
     const parsedInput = JSON.parse(input)
     const client = new GraphQLClient(endpoint, {
         headers: {

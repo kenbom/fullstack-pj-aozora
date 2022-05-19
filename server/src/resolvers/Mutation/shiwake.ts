@@ -82,13 +82,9 @@ export const shiwakeRosolvers = {
                 shiwake: null,
             }
         }
-<<<<<<< HEAD
-console.log(`shiwakeIdforDel:${shiwakeId}`)
-        const shiwakeDeleted = await prisma.shiwake.delete({
-=======
-        console.log(`idAtResolver:${JSON.stringify(input.shiwakeId)}`)
+        console.log(`shiwakeIdforDel:${input.shiwakeId}`)
+
         const shiwakeDone = await prisma.shiwake.delete({
->>>>>>> 85750f647d26f868be0c461b166ea3a9fb82602b
             where: {
                 id: Number(input.shiwakeId),
             },
@@ -105,7 +101,7 @@ console.log(`shiwakeIdforDel:${shiwakeId}`)
             //         userId:1,
             //     }
             // })
-            shiwake: shiwakeDeleted
+            shiwake: shiwakeDone
 
         }
     }
