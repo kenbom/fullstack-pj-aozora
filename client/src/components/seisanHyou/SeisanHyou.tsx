@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
+import { useShiwakeSakujo } from "./hooks/useShiwakeSakujo";
 
 import type { Shiwake } from "./hooks/useSeisanHyou";
 import type { Shiwakes } from "./hooks/useSeisanHyou";
@@ -34,6 +35,7 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
     const newNewStamp = JSON.stringify(newStamp).substr(1,10)
     return newNewStamp
   }
+  const deleteShiwake = useShiwakeSakujo()
   return (
     <Box
       //m={4}
@@ -71,7 +73,7 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
                     {shiwakeItem.kariKingaku}
                   </Td>
                   <Td fontSize="xs">{shiwakeItem.tekiyou}</Td>
-                  <Td><Button fontSize="xs">削除</Button></Td>
+                  <Td><Button onClick={() => deleteShiwake(51)} fontSize="xs">削除</Button></Td>
                 </Tr>
               );
             })}
