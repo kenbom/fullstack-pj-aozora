@@ -167,9 +167,12 @@ mutation shiwakeDelete($input:ID){
     userErrors {
       message
     } 
- 
   } 
 }
+///////////////////////////////
+{
+  "input":"29"
+} 
 
 //////////////////////上のvariables
 {

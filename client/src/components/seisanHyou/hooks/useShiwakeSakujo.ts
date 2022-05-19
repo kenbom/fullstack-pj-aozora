@@ -13,13 +13,15 @@ import { queryKeys } from "../../../config/queryKeys";
 import { useSeisanHyou } from "./useSeisanHyou";
 
 type ShiwakeId = {
-    id: number,
+    shiwakeId: string,
 }
 
-async function setSeisanHyouSakujo(input: ShiwakeId) {
+async function setSeisanHyouSakujo(strInput: string) {
+    console.log(`checkIdUse:${JSON.stringify(strInput)}`)
     const endpoint = BASE_URL;
     const tokenObj = localStorage.getItem("token");
     const auth = JSON.parse(tokenObj);
+git 
     const parsedInput = JSON.parse(input)
     const client = new GraphQLClient(endpoint, {
         headers: {
@@ -27,8 +29,8 @@ async function setSeisanHyouSakujo(input: ShiwakeId) {
         },
     });
     const mutation = gql`
-    mutation shiwakeDelete($input: ID) {
-      shiwakeDelete(shiwakeId: $input) {
+    mutation shiwakeDelete($input: ShiwakeDeleteArgs) {
+      shiwakeDelete(input: $input) {
         userErrors {
           message
         }
@@ -45,14 +47,15 @@ async function setSeisanHyouSakujo(input: ShiwakeId) {
 export function useShiwakeSakujo(): UseMutateFunction<
     void,
     unknown,
-    ShiwakeId,
+    string,
     unknown
 > {
     const toast = useCustomToast();
     const queryClient = useQueryClient();
 
     const { mutate } = useMutation(
-        (shiwakeId: ShiwakeId) => setSeisanHyouSakujo(shiwakeId),
+        (shiwakeId: string) => setSeisanHyouSakujo(shiwakeId),
+        
         {
             onSuccess: () => {
                 queryClient.refetchQueries([queryKeys.useSeisanHyou]);
