@@ -12,6 +12,7 @@ import { ShiwakeLeft } from "./ShiwakeLeft";
 import { ShiwakeRight } from "./ShiwakeRight";
 import { ShiwakeBoth } from "./ShiwakeBoth";
 import { graphqlSync } from "graphql";
+import {FormikShiwakeLeft} from "./FormikShiwakeLeft"
 
 export type ShiwakeInput = {
   hasseiDate: string 
@@ -117,7 +118,7 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
             // color="gray.100"
           >
             {atomShiwakeData.hyoujiPtn === "L" ? (
-              <ShiwakeLeft  date = {date} tekiyou={tekiyou} />
+              <FormikShiwakeLeft  date = {date} tekiyou={tekiyou} />
             ) : atomShiwakeData.hyoujiPtn === "R" ? (
               <ShiwakeRight date={date} tekiyou={tekiyou} />
             ) : (

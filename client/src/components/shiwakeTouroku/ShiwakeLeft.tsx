@@ -5,11 +5,19 @@ import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
-import { useSeisanHyou} from "../seisanHyou/hooks/useSeisanHyou"
-
+import { useSeisanHyou } from "../seisanHyou/hooks/useSeisanHyou";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import {
+  InputControl,
+  PercentComplete,
+  ResetButton,
+  SubmitButton,
+  CheckboxSingleControl,
+} from "formik-chakra-ui";
 
 type ShiwakePropsType = {
-  date:Date, 
+  date: Date;
   tekiyou?: string;
 };
 
@@ -20,17 +28,18 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
     setKingaku(e.target.value);
   };
   const { date, tekiyou } = props;
-  const shiwakeInput = { "input":{
-    "hasseiDate": date.toISOString(),
-    "tekiyou": tekiyou,
-    "kariCd": atomShiwakeData.kariKamokuCd,
-    "kariName": atomShiwakeData.kariKamokuMei,
-    "kariKingaku": Number(kingaku),
-    "kashiCd": atomShiwakeData.kashiKamokuCd,
-    "kashiName": atomShiwakeData.kashiKamokuMei,
-    "kashiKingaku": Number(kingaku),
-  }
-}
+  const shiwakeInput = {
+    input: {
+      hasseiDate: date.toISOString(),
+      tekiyou: tekiyou,
+      kariCd: atomShiwakeData.kariKamokuCd,
+      kariName: atomShiwakeData.kariKamokuMei,
+      kariKingaku: Number(kingaku),
+      kashiCd: atomShiwakeData.kashiKamokuCd,
+      kashiName: atomShiwakeData.kashiKamokuMei,
+      kashiKingaku: Number(kingaku),
+    },
+  };
   const mutateShiwake = useShiwakeTouroku();
   return (
     <>
@@ -76,4 +85,4 @@ export const ShiwakeLeft = (props: ShiwakePropsType) => {
       </GridItem>
     </>
   );
-        }
+};
