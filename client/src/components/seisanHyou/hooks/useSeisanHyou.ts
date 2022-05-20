@@ -5,6 +5,7 @@ import { BASE_URL } from "../../../config/constants";
 import { animationControls } from 'framer-motion';
 import { UseMutateFunction, useQuery, useQueryClient } from "react-query"
 import { queryKeys } from "../../../config/queryKeys"
+import Router from 'next/router';
 // import type { QueryObserverIdleResul } from "react-query"
 
 // interface Shiwakes {
@@ -31,6 +32,7 @@ async function getSeisanHyou(): Promise<Shiwakes> {
   // const queryKey = queryKeys.useSeisanHyou
   const endpoint = BASE_URL
   const tokenObj = localStorage.getItem("token")
+  if (!tokenObj) Router.push('/signin')
   const auth = JSON.parse(tokenObj)
   const client = new GraphQLClient(endpoint, {
     headers:{
@@ -52,7 +54,9 @@ async function getSeisanHyou(): Promise<Shiwakes> {
      }
      `
   const data = await client.request(query)
-  console.log(JSON.stringify(data, undefined, 2))
+  // if (!data) Router.push('/signin')
+  console.log(`atUseSeisanHyou:${JSON.stringify(data, undefined, 2)}`)
+  // if(!data) return
   return data
 }
 

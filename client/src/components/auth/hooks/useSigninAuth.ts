@@ -34,10 +34,13 @@ async function setSignin(credentials: SigninArgs) {
         localStorage.clear
         const lclStrg = JSON.stringify(serverToken.signin.token)
         localStorage.setItem("token", lclStrg)
+        // Router.push('/')
+        const toShowLclStrg = localStorage.getItem("token")
+        console.log(`lclStrg:${toShowLclStrg}`)
+        Router.push('/')
         }
-    const toShowLclStrg = localStorage.getItem("token")
-    console.log(`lclStrg:${toShowLclStrg}`)
-    if (serverToken) Router.push('/')
+    
+    // if (serverToken) Router.push('/')
     
 
 }
