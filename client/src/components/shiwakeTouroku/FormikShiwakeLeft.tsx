@@ -12,7 +12,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, useFormik } from "formik";
 import * as Yup from "yup";
 import {
   InputControl,
@@ -84,6 +84,7 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
           // setTimeout(() => {
           //   alert(JSON.stringify(values, null, `  `));
           // }, 1000);
+          
         }}
         // onReset={(values) => {
         //   values.email = "";
