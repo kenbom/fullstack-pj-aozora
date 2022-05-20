@@ -25,7 +25,7 @@ const server = new ApolloServer({
         // console.log(`atIndexReq:${JSON.stringify(req)}`)
         // console.log(`atIndexReqHeader:${JSON.stringify(req.headers)}`)
         console.log(`atIndexReqHeader:${JSON.stringify(req.headers)}`)
-        console.log(`atIndexReq:${JSON.stringify(req)}`)
+        // console.log(`atIndexReq:${JSON.stringify(req)}`)
         // console.log(`atIndexAuth:${req.headers.authorization}`)
         const userInfo = await getUserFromToken(req.headers.authorization)
         // console.log(`afterGetUserFT:${userInfo}`)

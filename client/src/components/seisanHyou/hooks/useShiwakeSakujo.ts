@@ -16,12 +16,12 @@ type ShiwakeId = {
     shiwakeId: string,
 }
 
-async function setSeisanHyouSakujo(strInput: string) {
-    console.log(`checkIdUse:${JSON.stringify(strInput)}`)
+async function setSeisanHyouSakujo(input: ShiwakeId) {
+    console.log(`checkIdUse:${JSON.stringify(input)}`)
     const endpoint = BASE_URL;
     const tokenObj = localStorage.getItem("token");
     const auth = JSON.parse(tokenObj);
-    const parsedInput = JSON.parse(input)
+    // const input = JSON.parse(strInput)
     const client = new GraphQLClient(endpoint, {
         headers: {
             authorization: auth,
@@ -39,21 +39,21 @@ async function setSeisanHyouSakujo(strInput: string) {
     const requestHeaders = {
         authorization: auth,
     };
-    const data = await client.request(mutation, parsedInput, requestHeaders);
+    const data = await client.request(mutation, input, requestHeaders);
     // console.log(`returnedData:${JSON.stringify(data)}`);
 }
 
 export function useShiwakeSakujo(): UseMutateFunction<
     void,
     unknown,
-    string,
+    ShiwakeId,
     unknown
 > {
     const toast = useCustomToast();
     const queryClient = useQueryClient();
 
     const { mutate } = useMutation(
-        (shiwakeId: string) => setSeisanHyouSakujo(shiwakeId),
+        (newShiwakeId: ShiwakeId) => setSeisanHyouSakujo(newShiwakeId),
         
         {
             onSuccess: () => {

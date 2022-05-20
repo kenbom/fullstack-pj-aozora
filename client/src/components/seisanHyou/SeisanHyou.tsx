@@ -37,8 +37,8 @@ export const SeisanHyou: VFC<SeisanHyouType> = (props) => {
   }
   const deleteShiwake = useShiwakeSakujo()
   function shiwakeSet(shiwakeId:number){
-    const stringfiedId = String(63)
-    const objShiwakeId = {"shiwakeId":stringfiedId}
+    // const stringfiedId = String(63)
+    const objShiwakeId = {"input":{"shiwakeId":String(shiwakeId)}}
     console.log(`checkIdOya:${JSON.stringify(objShiwakeId)}`)
     deleteShiwake(objShiwakeId)
   }
