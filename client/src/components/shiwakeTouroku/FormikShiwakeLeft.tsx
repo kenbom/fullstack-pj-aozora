@@ -12,7 +12,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { Formik, Form, Field, useFormik } from "formik";
+import { Formik, Form, Field, useFormik, } from "formik";
 import * as Yup from "yup";
 import {
   InputControl,
@@ -40,10 +40,10 @@ const ShiwakeTourokuSchema = Yup.object().shape({
   //   .min(2, 'Too Short!')
   //   .max(50, 'Too Long!')
   //   .required('Required'),
-//   tekiyou: Yup.string()
-//     .matches(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/, "英数字半角にて入力してください")
-//     .email("正しいメールアドレスを入力してください")
-//     .required("必須項目です"),
+  //   tekiyou: Yup.string()
+  //     .matches(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/, "英数字半角にて入力してください")
+  //     .email("正しいメールアドレスを入力してください")
+  //     .required("必須項目です"),
 });
 
 export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
@@ -73,78 +73,83 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
           kingaku: "",
         }}
         validationSchema={ShiwakeTourokuSchema}
-        onSubmit={() => {
-        //   const signinArgs = {
-        //     credentials: {
-        //       mail: values.email,
-        //       password: values.password,
-        //     },
-        //   };
-          mutateShiwake(shiwakeInput);
+        onSubmit={async (values, {resetForm}) => {
+          //   const signinArgs = {
+          //     credentials: {
+          //       mail: values.email,
+          //       password: values.password,
+          //     },
+          //   };
+          await setKingaku(undefined)
+          await mutateShiwake(shiwakeInput);
+          resetForm()
+          
           // setTimeout(() => {
           //   alert(JSON.stringify(values, null, `  `));
           // }, 1000);
-          
+
         }}
-        // onReset={(values) => {
-        //   values.email = "";
-        //   values.password = "";
-        // }}
-      >            
-        {({ handleSubmit, values }) => (
-     <Form onSubmit={handleSubmit as any}>
-        <GridItem rowSpan={3} colSpan={2} textAlign="center">
-          <HStack spacing="8px">
-            <VStack w="50%">
-              <Center w="80%" h="40px" bg="cyan.50">
-                借方：{atomShiwakeData.kariKamokuMei}
-              </Center>
-              <Box>
-                <InputControl
-                //type="text"
-                //   value={kingaku}
-                name="kingaku"
-                  placeholder="金額を入力してください"
-                  fontSize="sm"
-                  w="100%"
-                  onChange={changeKingaku}
-                />
-              </Box>
-            </VStack>
-            <VStack w="50%">
-              <Center w="80%" h="40px">
-                貸方：{atomShiwakeData.kashiKamokuMei}
-              </Center>
-              <Box
-                color="gray.300"
-                fontSize="sm"
-                w="100%"
-                h="35px"
+      // onReset={(values) => {
+      //   values.email = "";
+      //   values.password = "";
+      // }}
+      >
+        {({ handleSubmit, values, isSubmitting }) => (
+          <Form onSubmit={handleSubmit as any}>
+            <GridItem rowSpan={3} colSpan={2} textAlign="center">
+              <HStack spacing="8px">
+                <VStack w="50%">
+                  <Center w="80%" h="40px" bg="cyan.50">
+                    借方：{atomShiwakeData.kariKamokuMei}
+                  </Center>
+                  <Box>
+                    <InputControl
+                      //type="text"
+                      //   value={kingaku}
+                      name="kingaku"
+                      placeholder="金額を入力してください"
+                      fontSize="sm"
+                      w="100%"
+                      onChange={changeKingaku}
+                    />
+                  </Box>
+                </VStack>
+                <VStack w="50%">
+                  <Center w="80%" h="40px">
+                    貸方：{atomShiwakeData.kashiKamokuMei}
+                  </Center>
+                  <Box
+                    color="gray.300"
+                    fontSize="sm"
+                    w="100%"
+                    h="35px"
+                    pb={1}
+                    pt={2}
+                  >
+                    <p>{kingaku}</p>
+                  </Box>
+                </VStack>
+              </HStack>
+            </GridItem>
+            <GridItem rowSpan={1} colSpan={2}>
+              {/* <ButtonGroup> */}
+              <SubmitButton
+                w="90%"
+                mt={2}
                 pb={1}
-                pt={2}
+                colorScheme="gray"
+                type="submit"
+
+                disabled={isSubmitting}
+              // onClick={() => {
+              //   mutateShiwake(shiwakeInput);
+              // }}
               >
-                <p>{kingaku}</p>
-              </Box>
-            </VStack>
-          </HStack>
-        </GridItem>
-        <GridItem rowSpan={1} colSpan={2}>
-            {/* <ButtonGroup> */}
-          <SubmitButton
-            w="90%"
-            mt={2}
-            pb={1}
-            colorScheme="gray"
-            type="submit"
-            // onClick={() => {
-            //   mutateShiwake(shiwakeInput);
-            // }}
-          >
-            登録
-          </SubmitButton>
-          {/* </ButtonGroup> */}
-        </GridItem>
-        </Form>
+                登録
+              </SubmitButton>
+              {/* </ButtonGroup> */}
+            </GridItem>
+          </Form>
         )}
       </Formik>
     </>
