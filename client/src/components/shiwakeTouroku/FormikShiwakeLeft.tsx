@@ -9,10 +9,10 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { strdGrpCd } from "../../store/strdStates";
+import { strdGrpCd, strdTekiyou } from "../../store/strdStates";
 import { strdShiwakeData } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { Formik, Form, Field, useFormik, } from "formik";
+import { Formik, Form, Field, useFormik } from "formik";
 import * as Yup from "yup";
 import {
   InputControl,
@@ -27,15 +27,17 @@ import { ValuesOfCorrectTypeRule } from "graphql";
 
 type ShiwakePropsType = {
   date: Date;
-  tekiyou?: string;
+//   tekiyou?: string;
 };
 
 const ShiwakeTourokuSchema = Yup.object().shape({
   kingaku: Yup.string()
-    .matches(/^[a-zA-Z0-9!]*$/, "半角にて入力してください")
+    .matches(/^[0-9!]*$/, "半角数字にて入力してください")
     // .min(2, "4文字以上で設定してください")
     .max(9, "金額の制限を超えています")
     .required("必須項目です"),
+ tekiyou: Yup.string()
+    .max(20, "10文字以内で入力してください"),
   // lastName: Yup.string()
   //   .min(2, 'Too Short!')
   //   .max(50, 'Too Long!')
@@ -49,10 +51,15 @@ const ShiwakeTourokuSchema = Yup.object().shape({
 export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
   const [atomShiwakeData, setAtomShiwakeData] = useRecoilState(strdShiwakeData);
   const [kingaku, setKingaku] = useState(undefined);
+  const [tekiyou, setTekiyou] = useState(undefined)
   const changeKingaku = (e: any) => {
     setKingaku(e.target.value);
   };
-  const { date, tekiyou } = props;
+   const changeTekiyou = (e: any) => {
+     setTekiyou(e.target.value);
+   };
+//   const [atomTekiyou, setAtomTekiyou] = useRecoilState(strdTekiyou);
+  const { date } = props;
   const shiwakeInput = {
     input: {
       hasseiDate: date.toISOString(),
@@ -65,34 +72,37 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
       kashiKingaku: Number(kingaku),
     },
   };
+  
+
   const mutateShiwake = useShiwakeTouroku();
   return (
     <>
       <Formik
         initialValues={{
           kingaku: "",
+          tekiyou: "",
         }}
         validationSchema={ShiwakeTourokuSchema}
-        onSubmit={async (values, {resetForm}) => {
+        onSubmit={async (values, { resetForm }) => {
           //   const signinArgs = {
           //     credentials: {
           //       mail: values.email,
           //       password: values.password,
           //     },
           //   };
-          await setKingaku(undefined)
+          //   await setKingaku(undefined);
           await mutateShiwake(shiwakeInput);
-          resetForm()
-          
+          //   await setAtomTekiyou(undefined);
+          resetForm();
+
           // setTimeout(() => {
           //   alert(JSON.stringify(values, null, `  `));
           // }, 1000);
-
         }}
-      // onReset={(values) => {
-      //   values.email = "";
-      //   values.password = "";
-      // }}
+        // onReset={(values) => {
+        //   values.email = "";
+        //   values.password = "";
+        // }}
       >
         {({ handleSubmit, values, isSubmitting }) => (
           <Form onSubmit={handleSubmit as any}>
@@ -107,7 +117,10 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
                       //type="text"
                       //   value={kingaku}
                       name="kingaku"
-                      placeholder="金額を入力してください"
+                      inputProps = {{
+                        placeholder: "金額を入力してください",
+                        color: "gray.800",
+                      }}
                       fontSize="sm"
                       w="100%"
                       onChange={changeKingaku}
@@ -119,14 +132,28 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
                     貸方：{atomShiwakeData.kashiKamokuMei}
                   </Center>
                   <Box
-                    color="gray.300"
-                    fontSize="sm"
-                    w="100%"
-                    h="35px"
-                    pb={1}
-                    pt={2}
+                  // color="gray.300"
+                  // fontSize="sm"
+                  // w="100%"
+                  // h="35px"
+                  // pb={1}
+                  // pt={2}
                   >
-                    <p>{kingaku}</p>
+                    <InputControl
+                      //type="text"
+                      //   value={kingaku}
+                      name="tekiyou"
+                      //   placeholder="メモが入力できます"
+                      inputProps={{
+                        placeholder: "取引メモが入力できます",
+                        color: "gray.800",
+                      }}
+                      fontSize="sm"
+                      w="100%"
+                      colorScheme="gray"
+                      color="gray.300"
+                      onChange={changeTekiyou}
+                    />
                   </Box>
                 </VStack>
               </HStack>
@@ -139,11 +166,10 @@ export const FormikShiwakeLeft = (props: ShiwakePropsType) => {
                 pb={1}
                 colorScheme="gray"
                 type="submit"
-
                 disabled={isSubmitting}
-              // onClick={() => {
-              //   mutateShiwake(shiwakeInput);
-              // }}
+                // onClick={() => {
+                //   mutateShiwake(shiwakeInput);
+                // }}
               >
                 登録
               </SubmitButton>

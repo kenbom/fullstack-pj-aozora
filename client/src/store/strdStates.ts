@@ -1,3 +1,4 @@
+import React from "React"
 import { atom } from 'recoil'
 import type { ShiwakeData } from "../components/kamokuMenu/MenuItem"
 
@@ -5,6 +6,10 @@ export type StrdMenuItem = {
   kamokuGrpCd: number,
   kamokuCd: number,
   kamokuMei: string,
+}
+
+export type Tekiyou = {
+  tekiyou: string
 }
 
 export const strdGrpCd = atom<number>({
@@ -28,5 +33,12 @@ export const strdShiwakeData = atom<ShiwakeData>({
     kashiKamokuCd: 0,
     kashiKamokuMei: "未定",
     hyoujiPtn: ""
+  }
+})
+
+export const strdTekiyou = atom<Tekiyou>({
+  key: 'strdTekiyou',
+  default: {
+    tekiyou: ""
   }
 })
