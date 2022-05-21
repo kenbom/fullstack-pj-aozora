@@ -57,15 +57,26 @@ function getPreShiwakeData(kamokuItem: KamokuMenuItem): ShiwakeData {
       kashiKamokuMei: "事業主貸方",
       hyoujiPtn: "L",
     };
-  return {
-    kariKamokuGrpCd: 0,
-    kariKamokuCd: 0,
-    kariKamokuMei: "未定",
-    kashiKamokuGrpCd: 0,
-    kashiKamokuCd: 0,
-    kashiKamokuMei: "未定",
-    hyoujiPtn: "B",
-  };
+  else if (kamokuMenuGrpCd === 1)
+    return {
+      kariKamokuGrpCd: 0,
+      kariKamokuCd: 0,
+      kariKamokuMei: "未定",
+      kashiKamokuGrpCd: 0,
+      kashiKamokuCd: 0,
+      kashiKamokuMei: "未定",
+      hyoujiPtn: "B",
+    };
+    return {
+      kariKamokuGrpCd: 0,
+      kariKamokuCd: 0,
+      kariKamokuMei: "未定",
+      kashiKamokuGrpCd: 0,
+      kashiKamokuCd: 0,
+      kashiKamokuMei: "未定",
+      hyoujiPtn: "U",
+    };
+
 }
 
 export const MenuItem: VFC<KamokuProps> = (props) => {
@@ -75,6 +86,7 @@ export const MenuItem: VFC<KamokuProps> = (props) => {
   const [changedGrpCd, setChangedGrpCd] = useRecoilState(strdGrpCd);
   const setChangedMenuItem = useSetRecoilState(strdMenuItem);
   const setPreShiwakeData = useSetRecoilState(strdShiwakeData);
+  
   function handleOnClick(kamokuItem: KamokuMenuItem): void {
     const preShiwakeData = getPreShiwakeData(kamokuItem);
     setPreShiwakeData(preShiwakeData);

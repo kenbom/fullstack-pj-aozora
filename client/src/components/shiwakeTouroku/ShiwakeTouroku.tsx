@@ -9,15 +9,15 @@ import {
   strdTekiyou,
 } from "../../store/strdStates";
 import { Grid, GridItem } from "@chakra-ui/react";
-import type { StrdMenuItem } from "../../store/strdStates";
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker, { CalendarContainer } from "react-datepicker";
+// import type { StrdMenuItem } from "../../store/strdStates";
+// import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker, { CalendarContainer } from "react-datepicker";
 // import { ShiwakeLeft } from "./ShiwakeLeft";
-import { ShiwakeRight } from "./ShiwakeRight";
-import { ShiwakeBoth } from "./ShiwakeBoth";
-import { graphqlSync } from "graphql";
-import { FormikShiwakeLeft } from "./FormikShiwakeLeft";
-import type {Tekiyou} from "../../store/strdStates"
+// import { ShiwakeRight } from "./ShiwakeRight";
+// import { graphqlSync } from "graphql";
+import {ShiwakeSelected } from "./ShiwakeSelected";
+import { ShiwakeUnselected } from "./ShiwakeUnselected";
+// import type { Tekiyou } from "../../store/strdStates";
 
 export type ShiwakeInput = {
   hasseiDate: string;
@@ -44,25 +44,17 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
     kamokuCd: 0,
     kamokuMei: "unclicked",
   });
-  const Today = new Date();
-  const [date, setDate] = React.useState(Today);
-  const MyContainer = ({ className, children }) => {
-    return (
-      <div style={{ color: "#fff" }}>
-        <CalendarContainer className={className}>
-          {/* <div style={{ background: "#f0f0f0" }}>
-            What is your favorite day?
-          </div> */}
-          <div style={{ position: "relative" }}>{children}</div>
-        </CalendarContainer>
-      </div>
-    );
-  };
-  // const [tekiyou, setTekiyou] = useState("");
-  // const changeTekiyou = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setAtomTekiyou(e.target.value as string);
+  // const Today = new Date();
+  // const [date, setDate] = React.useState(Today);
+  // const MyContainer = ({ className, children }) => {
+  //   return (
+  //     <div style={{ color: "#fff" }}>
+  //       <CalendarContainer className={className}>
+  //         <div style={{ position: "relative" }}>{children}</div>
+  //       </CalendarContainer>
+  //     </div>
+  //   );
   // };
-
   return (
     <div>
       <Box
@@ -84,56 +76,41 @@ export const ShiwakeTouroku: VFC<shiwakeTourokuProps> = (props) => {
           templateColumns="repeat(2, 1fr)"
           gap={0.5}
         >
-          <GridItem
+          {/* <GridItem
             rowSpan={1}
             colSpan={4}
             // border="1px"
             // color="gray.100"
           >
             <HStack spacing="1px" mt={2} ml={5}>
-              {/* <HStack> */}
-                <Box></Box>
-                <HStack>
-                  <h3>日付を選択してください</h3>
-                  <ArrowRightIcon color="gray.300" />
+              <Box></Box>
+              <HStack>
+                <h3>日付を選択してください</h3>
+                <ArrowRightIcon color="gray.300" />
 
-                  <DatePicker
-                    placeholderText=""
-                    onChange={(selectedDate) => {
-                      setDate(selectedDate || Today);
-                    }}
-                    calendarContainer={MyContainer}
-                    monthsShown={2}
-                    showPreviousMonths
-                    selected={date}
-                  ></DatePicker>
-                {/* </HStack> */}
+                <DatePicker
+                  placeholderText=""
+                  onChange={(selectedDate) => {
+                    setDate(selectedDate || Today);
+                  }}
+                  calendarContainer={MyContainer}
+                  monthsShown={2}
+                  showPreviousMonths
+                  selected={date}
+                ></DatePicker>
               </HStack>
-
-              {/* <Box>
-                <Input
-                  placeholder="取引メモを入力できます"
-                  fontSize="sm"
-                  ml={102}
-                  mr={-5}
-                  onChange={changeTekiyou}
-                  type="text"
-                />
-              </Box> */}
             </HStack>
-          </GridItem>
+          </GridItem> */}
           <GridItem
             rowSpan={2}
             colSpan={2}
             // border="1px"
             // color="gray.100"
           >
-            {atomShiwakeData.hyoujiPtn === "L" ? (
-              <FormikShiwakeLeft date={date} />
-            ) : atomShiwakeData.hyoujiPtn === "R" ? (
-              <ShiwakeRight date={date} />
+            {atomShiwakeData.hyoujiPtn === "U" ? (
+              <ShiwakeUnselected />
             ) : (
-              <ShiwakeBoth date={date} />
+              <ShiwakeSelected />
             )}
           </GridItem>
           {/* <GridItem
