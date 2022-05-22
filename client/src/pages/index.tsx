@@ -23,18 +23,18 @@ const Home: NextPage = () => {
           templateRows="repeat(10, 1fr)"
           //templateRows='100px, 100px, 100px'
           // templateColumns='repeat(5, 1fr)'
-          templateColumns="repeat(3, 1fr)"
+          templateColumns="repeat(8, 1fr)"
           gap={2}
           // bgColor="red"
           // color="black"
         >
-          <GridItem rowSpan={10} colSpan={1}>
+          <GridItem rowSpan={10} colSpan={2}>
             <KamokuMenu name="取引選択" flug={false}></KamokuMenu>
           </GridItem>
-          <GridItem rowSpan={3} colSpan={2}>
+          <GridItem rowSpan={3} colSpan={6}>
             <ShiwakeTouroku name="取引登録"></ShiwakeTouroku>
           </GridItem>
-          <GridItem rowSpan={6} colSpan={2}>
+          <GridItem rowSpan={6} colSpan={6}>
             <SeisanHyou name="取引履歴"></SeisanHyou>
           </GridItem>
         </Grid>

@@ -24,6 +24,9 @@ import {
 } from "formik-chakra-ui";
 import { GraphQLEnumType } from "graphql";
 import { useSigninAuth } from "./hooks/useSigninAuth";
+import { redirect } from "next/dist/server/api-utils";
+import Router from "next/router";
+import { NextPage } from "next";
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -55,17 +58,19 @@ export const Signin: VFC = () => {
                 password: "",
               }}
               validationSchema={SignupSchema}
-              onSubmit={(values) => {
+               onSubmit={ async (values, {resetForm}) => {
                 const signinArgs = {
                   credentials: {
                     mail: values.email,
                     password: values.password,
                   },
                 };
-                mutateSignin(signinArgs);
-                // setTimeout(() => {
-                //   alert(JSON.stringify(values, null, `  `));
-                // }, 1000);
+                // await localStorage.removeItem("token")
+                await mutateSignin(signinArgs);
+                await console.log(`lclStrgTkn:${localStorage.getItem("token")}`)
+                await !localStorage.getItem("token")?Router.push("/"):resetForm
+                // else {return}
+                
               }}
               onReset={(values) => {
                 values.email = "";

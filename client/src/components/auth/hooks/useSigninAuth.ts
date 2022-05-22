@@ -16,7 +16,7 @@ type SigninArgs = {
 }
 
 async function setSignin(credentials: SigninArgs) {
-    // localStorage.clear()
+    localStorage.clear()
     const endpoint = BASE_URL
     const client = new GraphQLClient(endpoint)
 
@@ -27,22 +27,10 @@ async function setSignin(credentials: SigninArgs) {
             }
         }
     `
+    // await localStorage.clear()
     const serverToken = await client.request(mutation, credentials)
-    console.log(`afterSin:${JSON.stringify(serverToken)}`)
-    // console.log(serverToken)
-    if (serverToken) {
-        localStorage.clear
-        const lclStrg = JSON.stringify(serverToken.signin.token)
-        localStorage.setItem("token", lclStrg)
-        // Router.push('/')
-        const toShowLclStrg = localStorage.getItem("token")
-        console.log(`lclStrg:${toShowLclStrg}`)
-        Router.push('/')
-        }
-    
-    // if (serverToken) Router.push('/')
-    
-
+    const lclStrg =  await JSON.stringify(serverToken.signin.token)
+    await localStorage.setItem("token", lclStrg)
 }
 
 export function useSigninAuth(): UseMutateFunction<
