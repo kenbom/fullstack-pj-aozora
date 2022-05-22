@@ -1,12 +1,10 @@
 import React, { VFC, useState } from "react";
 import {
   Box,
-  Button,
   HStack,
-  Input,
   VStack,
   Center,
-  ButtonGroup,
+  Flex,
 } from "@chakra-ui/react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { strdGrpCd, strdTekiyou } from "../../store/strdStates";
@@ -19,12 +17,9 @@ import { useShiwakeTouroku } from "./hooks/useShiwakeTouroku";
 import { useSeisanHyou } from "../seisanHyou/hooks/useSeisanHyou";
 import { ValuesOfCorrectTypeRule } from "graphql";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import DatePicker, { CalendarContainer } from "react-datepicker";
-
-// type ShiwakePropsType = {
-//   date: Date;
-//   //   tekiyou?: string;
-// };
+import DatePicker, { CalendarContainer, registerLocale } from "react-datepicker";
+import ja from 'date-fns/locale/ja';
+import dayjs from "dayjs";
 
 const ShiwakeTourokuSchema = Yup.object().shape({
   kingaku: Yup.string()
@@ -44,9 +39,6 @@ export const ShiwakeSelected = () => {
   const changeTekiyou = (e: any) => {
     setTekiyou(e.target.value);
   };
-  //   const [atomTekiyou, setAtomTekiyou] = useRecoilState(strdTekiyou);
-  //   const { date } = props;
-
   const mutateShiwake = useShiwakeTouroku();
   const Today = new Date();
   const [date, setDate] = React.useState(Today);
@@ -59,6 +51,7 @@ export const ShiwakeSelected = () => {
       </div>
     );
   };
+  registerLocale('ja', ja);
   const shiwakeInput = {
     input: {
       hasseiDate: date.toISOString(),
@@ -76,14 +69,9 @@ export const ShiwakeSelected = () => {
       <GridItem
         rowSpan={1}
         colSpan={2}
-        // border="1px"
-        // color="gray.100"
       >
-        {/* <HStack spacing="1px" mt={2} ml={5}> */}
-        {/* <HStack> */}
-        {/* <Box></Box> */}
-        <HStack>
-          <Box w="40%" color="gray.300" paddingLeft="10px" paddingRight="-50px">
+        <Flex>
+          <Box color="gray.400" marginRight="15px" marginLeft="55px">
             日付を選択してください
           </Box>
           <ArrowRightIcon w="10px" color="gray.300" />
@@ -97,11 +85,11 @@ export const ShiwakeSelected = () => {
               monthsShown={2}
               showPreviousMonths
               selected={date}
-            ></DatePicker>
+              locale='ja'>
+
+            </DatePicker>
           </Box>
-          {/* </HStack> */}
-        </HStack>
-        {/* </HStack> */}
+        </Flex>
       </GridItem>
       <Formik
         initialValues={{
@@ -110,15 +98,7 @@ export const ShiwakeSelected = () => {
         }}
         validationSchema={ShiwakeTourokuSchema}
         onSubmit={async (values, { resetForm }) => {
-          //   const signinArgs = {
-          //     credentials: {
-          //       mail: values.email,
-          //       password: values.password,
-          //     },
-          //   };
-          //   await setKingaku(undefined);
           await mutateShiwake(shiwakeInput);
-          //   await setAtomTekiyou(undefined);
           resetForm();
         }}
       >
@@ -145,14 +125,12 @@ export const ShiwakeSelected = () => {
 
                   <Box>
                     <InputControl
-                      //type="text"
-                      //   value={kingaku}
                       name="kingaku"
                       inputProps={{
                         placeholder: "金額を入力してください",
                         color: "gray.800",
+                        fontSize: "sm"
                       }}
-                      fontSize="sm"
                       w="100%"
                       onChange={changeKingaku}
                     />
@@ -180,8 +158,8 @@ export const ShiwakeSelected = () => {
                       inputProps={{
                         placeholder: "取引メモが入力できます",
                         color: "gray.800",
+                        fontSize: "sm"
                       }}
-                      fontSize="sm"
                       w="100%"
                       colorScheme="gray"
                       color="gray.300"
