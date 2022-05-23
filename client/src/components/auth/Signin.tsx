@@ -68,7 +68,7 @@ export const Signin: VFC = () => {
                 // await localStorage.removeItem("token")
                 await mutateSignin(signinArgs);
                 await console.log(`lclStrgTkn:${localStorage.getItem("token")}`)
-                await !localStorage.getItem("token")?Router.push("/"):resetForm
+                await !!localStorage.getItem("token")?Router.push("/"):resetForm
                 // else {return}
                 
               }}
