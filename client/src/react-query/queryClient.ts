@@ -1,5 +1,6 @@
 import { createStandaloneToast } from '@chakra-ui/react';
 import { QueryClient } from 'react-query';
+import Router from "next/router";
 
 const toast = createStandaloneToast();
 
@@ -11,6 +12,7 @@ function queryErrorHandler(error: unknown): void {
     // prevent duplicate toasts
     toast.closeAll();
     toast({ title, status: 'error', variant: 'subtle', isClosable: true });
+    Router.push("/signin")
 }
 
 export function generateQueryClient(): QueryClient {

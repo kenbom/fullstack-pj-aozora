@@ -16,7 +16,7 @@ type SigninArgs = {
 }
 
 async function setSignin(credentials: SigninArgs) {
-    localStorage.clear()
+    // localStorage.clear()
     const endpoint = BASE_URL
     const client = new GraphQLClient(endpoint)
 
@@ -29,8 +29,11 @@ async function setSignin(credentials: SigninArgs) {
     `
     // await localStorage.clear()
     const serverToken = await client.request(mutation, credentials)
-    const lclStrg =  await JSON.stringify(serverToken.signin.token)
+    // const isLoginSuccess = serverToken?true:false
+    const lclStrg = await JSON.stringify(serverToken.signin.token)
     await localStorage.setItem("token", lclStrg)
+
+    // return isLoginSuccess
 }
 
 export function useSigninAuth(): UseMutateFunction<
@@ -45,13 +48,6 @@ export function useSigninAuth(): UseMutateFunction<
     const { mutate } = useMutation((newSigninArgs: SigninArgs) =>
         setSignin(newSigninArgs),
         {
-            // onSucess: () => {
-            //     queryClient.invalidateQueries([queryKeys.useSigninAuth]);
-            //     toast({
-            //         title: '登録完了しました。',
-            //         status: 'success',
-            //     });
-            // },
             onSuccess: () => {
                 queryClient.invalidateQueries([queryKeys.useSigninAuth]);
                 toast({
@@ -59,7 +55,11 @@ export function useSigninAuth(): UseMutateFunction<
                     status: 'success',
                 });
                 queryClient.refetchQueries([queryKeys.useSeisanHyou])
+                Router.push("/")
             },
+            onError: () => {
+                Router.push("/signin")
+            }
         }
     );
     return mutate

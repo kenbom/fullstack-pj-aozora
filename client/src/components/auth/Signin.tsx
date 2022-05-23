@@ -27,7 +27,6 @@ import { useSigninAuth } from "./hooks/useSigninAuth";
 import { redirect } from "next/dist/server/api-utils";
 import Router from "next/router";
 import { NextPage } from "next";
-
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .matches(/^[a-zA-Z0-9!-/:-@¥[-`{-~]*$/, "英数字半角にて設定してください")
@@ -58,7 +57,7 @@ export const Signin: VFC = () => {
                 password: "",
               }}
               validationSchema={SignupSchema}
-               onSubmit={ async (values, {resetForm}) => {
+              onSubmit={async (values, { resetForm }) => {
                 const signinArgs = {
                   credentials: {
                     mail: values.email,
@@ -67,10 +66,13 @@ export const Signin: VFC = () => {
                 };
                 // await localStorage.removeItem("token")
                 await mutateSignin(signinArgs);
-                await console.log(`lclStrgTkn:${localStorage.getItem("token")}`)
-                await !!localStorage.getItem("token")?Router.push("/"):resetForm
+                await console.log(
+                  `lclStrgTkn:${localStorage.getItem("token")}`
+                );
+                // await !!localStorage.getItem("token")?Router.push("/"):resetForm()
                 // else {return}
-                
+                // const isLoginSuccess = await setSignin;
+                // isLoginSuccess ? Router.push("/") : resetForm();
               }}
               onReset={(values) => {
                 values.email = "";
